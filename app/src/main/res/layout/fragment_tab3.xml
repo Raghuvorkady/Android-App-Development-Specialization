@@ -11,7 +11,7 @@
         android:background="#FFF">
 
         <Button
-            android:id="@+id/introButton"
+            android:id="@+id/introButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -23,10 +23,10 @@
             android:textColor="#000" />
 
         <TextView
-            android:id="@+id/introText"
+            android:id="@+id/introText3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/introButton"
+            android:layout_below="@id/introButton3"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
@@ -39,10 +39,10 @@
             android:visibility="visible" />
 
         <Button
-            android:id="@+id/exampleButton"
+            android:id="@+id/exampleButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/introText"
+            android:layout_below="@id/introText3"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
@@ -53,16 +53,16 @@
             android:textColor="#000" />
 
         <RelativeLayout
-            android:id="@+id/exampleLayout"
+            android:id="@+id/exampleLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/exampleButton"
+            android:layout_below="@id/exampleButton3"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:alpha="0.8"
             android:background="#FBBC05"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/infoText"
@@ -141,10 +141,10 @@
 
 
         <Button
-            android:id="@+id/furtherReadingB"
+            android:id="@+id/furtherReadingB3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/exampleLayout"
+            android:layout_below="@id/exampleLayout3"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:background="#FBBC05"
@@ -154,10 +154,10 @@
             android:textColor="#000" />
 
         <TextView
-            android:id="@+id/furtherReadingText"
+            android:id="@+id/furtherReadingText3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/furtherReadingB"
+            android:layout_below="@id/furtherReadingB3"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
@@ -168,6 +168,6 @@
             android:text="For Further reading of Android Services,
 visit:https://developer.android.com/guide/components/services"
             android:textColor="#000"
-            android:visibility="visible" />
+            android:visibility="gone" />
     </RelativeLayout>
 </ScrollView>

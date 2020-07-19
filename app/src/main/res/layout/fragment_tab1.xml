@@ -20,7 +20,8 @@
             android:padding="10dp"
             android:text="Introduction"
             android:textAllCaps="false"
-            android:textColor="#FFF" />
+            android:textColor="#FFF"
+            android:tooltipText="Intoduction button"/>
 
         <TextView
             android:id="@+id/introText"

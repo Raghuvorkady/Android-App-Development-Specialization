@@ -19,7 +19,7 @@ public class tab1 extends Fragment {
     private RelativeLayout exampleScroller;
     private TextView introText, furtherReadingTextView;
     public static Switch toastSwitch;
-    public static boolean INTRO_ENABLED = false;
+    public static boolean INTRO_ENABLED = true;
     public static boolean EXAMPLE_ENABLED = false;
     public static boolean FURTHER_READING_ENABLED = false;
 
