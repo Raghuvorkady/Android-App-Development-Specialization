@@ -1,18 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4CAF50"
     tools:context=".tab4">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="tab4"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF">
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/introButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#34A853"
+            android:padding="10dp"
+            android:text="Introduction"
+            android:textAllCaps="false"
+            android:textColor="#FFF" />
+
+        <TextView
+            android:id="@+id/introText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/introButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="10dp"
+            android:alpha="0.8"
+            android:background="#34A853"
+            android:padding="6dp"
+            android:text="A content provider manages access to a central repository of data. A provider is part of an Android application, which often provides its own UI for working with the data. However, content providers are primarily intended to be used by other applications, which access the provider using a provider client object. Together, providers and provider clients offer a consistent, standard interface to data that also handles inter-process communication and secure data access."
+            android:textColor="#FFF"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/exampleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/introText"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="#34A853"
+            android:padding="10dp"
+            android:text="Example"
+            android:textAllCaps="false"
+            android:textColor="#FFF" />
+
+        <RelativeLayout
+            android:id="@+id/exampleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exampleButton"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:alpha="0.8"
+            android:background="#34A853"
+            android:visibility="visible">
+
+            <TableLayout
+                android:id="@+id/exampleTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="5dp"
+                android:gravity="center">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:text="Save contacts"
+                        android:textAlignment="center"
+                        android:textColor="#FFF"
+                        android:background="#777"
+                        android:padding="5dp"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:text="View contacts"
+                        android:textAlignment="center"
+                        android:textColor="#FFF"
+                        android:padding="5dp"
+                        android:background="#999"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Enter your name:"
+                        android:textColor="#FFF"
+                        android:textSize="12sp"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Enter your phone:"
+                        android:textColor="#FFF"
+                        android:textSize="12sp"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Enter your email:"
+                        android:textColor="#FFF"
+                        android:textSize="12sp"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:gravity="right">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Save"
+                        android:textColor="#FFF"
+                        android:background="#444"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/furtherReadingB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exampleLayout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:background="#34A853"
+            android:padding="10dp"
+            android:text="Further Reading"
+            android:textAllCaps="false"
+            android:textColor="#FFF" />
+
+        <TextView
+            android:id="@+id/furtherReadingText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/furtherReadingB"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:alpha="0.8"
+            android:autoLink="web"
+            android:background="#34A853"
+            android:padding="8dp"
+            android:text="For Further reading of Android ContentProvider,
+visit:https://developer.android.com/guide/topics/providers/content-provider-basics"
+            android:textColor="#FFF"
+            android:visibility="visible" />
+    </RelativeLayout>
+</ScrollView>

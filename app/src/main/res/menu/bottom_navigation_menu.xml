@@ -4,21 +4,21 @@
     <item
         android:id="@+id/page_1"
         android:enabled="true"
-        android:icon="@android:drawable/stat_sys_speakerphone"
-        android:title="text_label_1"/>
+        android:icon="@android:drawable/stat_sys_download"
+        android:title="Activity"/>
     <item
         android:id="@+id/page_2"
         android:enabled="true"
-        android:icon="@android:drawable/star_big_on"
-        android:title="text_label_2"/>
+        android:icon="@drawable/broadcast_receiver"
+        android:title="BroadcastReceiver"/>
     <item
         android:id="@+id/page_3"
         android:enabled="true"
-        android:icon="@android:drawable/gallery_thumb"
-        android:title="text_label_1"/>
+        android:icon="@drawable/services"
+        android:title="Services"/>
     <item
         android:id="@+id/page_4"
         android:enabled="true"
-        android:icon="@android:drawable/arrow_up_float"
-        android:title="text_label_2"/>
+        android:icon="@drawable/content_provider"
+        android:title="ContentProvider"/>
 </menu>

@@ -21,7 +21,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //if (tab1.toastSwitch.isChecked())
+         {
+            Toast.makeText(getApplicationContext(),"onCreate()",Toast.LENGTH_SHORT).show();
+        }
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
@@ -49,33 +52,45 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-   /* @Override
+   @Override
     protected void onStart() {
         super.onStart();
+       //if (tab1.toastSwitch.isChecked())
+       {
+           Toast.makeText(getApplicationContext(),"onStart()",Toast.LENGTH_SHORT).show();
+       }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        //if (tab1.toastSwitch.isChecked())
+        {
+            Toast.makeText(getApplicationContext(),"onResume()",Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
+        Toast.makeText(getApplicationContext(),"onRestart()",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        Toast.makeText(getApplicationContext(),"onPause()",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        Toast.makeText(getApplicationContext(),"onStop()",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-    }*/
+        Toast.makeText(getApplicationContext(),"onDestroy()",Toast.LENGTH_SHORT).show();
+    }
 }
