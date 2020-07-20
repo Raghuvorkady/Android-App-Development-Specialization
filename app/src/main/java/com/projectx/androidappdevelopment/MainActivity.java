@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                     switch (menuItem.getItemId()){
                         case R.id.page_1:selectedFragment = new tab1();
                             break;
-                        case R.id.page_2: selectedFragment = new tab2();
+                        case R.id.page_2: selectedFragment = new ImageDownloader();
                             break;
                         case R.id.page_3:selectedFragment = new tab3();
                             break;

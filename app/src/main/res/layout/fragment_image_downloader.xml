@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ImageDownloader">
+
+    <TextView
+        android:id="@+id/webServiceExample"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/text_bg"
+        android:padding="10dp"
+        android:text="Web Service Example"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/boxForDownloader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/webServiceExample"
+        android:layout_margin="10dp"
+        android:background="@drawable/relative_box_bg">
+
+        <EditText
+            android:id="@+id/searchBox"
+            android:lines="1"
+            android:layout_width="match_parent"
+            android:inputType="text"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/box_bg"
+            android:drawableEnd="@drawable/ic_baseline_search_24"
+            android:drawableRight="@drawable/ic_baseline_search_24"
+            android:hint="Enter URL of the image to download"
+            android:padding="10dp" />
+
+        <ImageView
+            android:id="@+id/imageToDl"
+            android:layout_width="350dp"
+            android:layout_height="330dp"
+            android:layout_below="@id/searchBox"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageToDl"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:textColor="#444"
+            android:text="Fire camp in the nature"
+            android:textSize="18sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/download_bg"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Download"
+            android:id="@+id/downloadB"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
