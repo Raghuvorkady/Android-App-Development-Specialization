@@ -4,21 +4,25 @@
     <item
         android:id="@+id/page_1"
         android:enabled="true"
-        android:icon="@android:drawable/stat_sys_download"
-        android:title="Activity"/>
+        android:icon="@drawable/activity"
+        android:title="Activity"
+        android:tooltipText="Activity" />
     <item
         android:id="@+id/page_2"
         android:enabled="true"
         android:icon="@drawable/broadcast_receiver"
-        android:title="BroadcastReceiver"/>
+        android:title="BroadcastReceiver"
+        android:tooltipText="Broadcast" />
     <item
         android:id="@+id/page_3"
         android:enabled="true"
         android:icon="@drawable/services"
-        android:title="Services"/>
+        android:title="Services"
+        android:tooltipText="Services" />
     <item
         android:id="@+id/page_4"
         android:enabled="true"
         android:icon="@drawable/content_provider"
-        android:title="ContentProvider"/>
+        android:title="ContentProvider"
+        android:tooltipText="ContentProvider" />
 </menu>

@@ -1,67 +1,47 @@
 package com.projectx.androidappdevelopment;
 
+import android.app.usage.NetworkStats;
+import android.app.usage.NetworkStatsManager;
+import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link tab2#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class tab2 extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private Button introButton, exampleButton, furtherReadingButton;
     private RelativeLayout exampleScroller;
+    private ImageView bluetoothIndicator, wiFiIndicator, mobileDataIndicator;
     private TextView introText, furtherReadingTextView;
     public static boolean INTRO_ENABLED = true;
     public static boolean EXAMPLE_ENABLED = false;
     public static boolean FURTHER_READING_ENABLED = false;
+
     public tab2() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment tab2.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static tab2 newInstance(String param1, String param2) {
-        tab2 fragment = new tab2();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -70,14 +50,35 @@ public class tab2 extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tab2, container, false);
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
         introButton = (Button) getView().findViewById(R.id.introButton2);
         introText = (TextView) getView().findViewById(R.id.introText2);
         exampleButton = (Button) getView().findViewById(R.id.exampleButton2);
         exampleScroller = (RelativeLayout) getView().findViewById(R.id.exampleLayout2);
         furtherReadingButton = (Button) getView().findViewById(R.id.furtherReadingB2);
         furtherReadingTextView = (TextView) getView().findViewById(R.id.furtherReadingText2);
+        bluetoothIndicator = (ImageView) getView().findViewById(R.id.bluetoothIndicator);
+        wiFiIndicator = (ImageView) getView().findViewById(R.id.wiFiIndicator);
+        mobileDataIndicator = (ImageView) getView().findViewById(R.id.mobileDataIndicator);
+
+        exampleScroller.setVisibility(View.GONE);
+        //stateChecker();
+
+        String stringTab1 = "BroadcastReceiver in Android";
+        getActivity().setTitle(stringTab1 + "");
+
+
+        IntentFilter bfilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+        getActivity().getApplicationContext().registerReceiver(broadcastReceiverForBluetooth, bfilter);
+
+        IntentFilter wFilter = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
+        getActivity().getApplicationContext().registerReceiver(broadcastReceiverForWiFi, wFilter);
+
+        IntentFilter mFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        getActivity().getApplicationContext().registerReceiver(broadcastReceiverForMobileData, mFilter);
 
         introButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +97,7 @@ public class tab2 extends Fragment {
             @Override
             public void onClick(View v) {
                 if (EXAMPLE_ENABLED == false) {
+                    //stateChecker();
                     exampleScroller.setVisibility(View.VISIBLE);
                     EXAMPLE_ENABLED = true;
                 } else {
@@ -117,5 +119,79 @@ public class tab2 extends Fragment {
                 }
             }
         });
+    }
+
+    private void stateChecker() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getApplicationContext().getSystemService(getActivity().getApplicationContext().CONNECTIVITY_SERVICE);
+        NetworkInfo mobileInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        boolean mobileConnected = mobileInfo.getState() == NetworkInfo.State.CONNECTED;
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        WifiManager wifi = (WifiManager) getActivity().getApplicationContext().getSystemService(getActivity().getApplicationContext().WIFI_SERVICE);
+        if (wifi.isWifiEnabled()) {
+            wiFiIndicator.setImageDrawable(getResources().getDrawable(R.drawable.green_signal));
+        } else {
+            wiFiIndicator.setImageDrawable(getResources().getDrawable(R.drawable.red_signal));
+        }
+        if (mobileConnected) {
+            mobileDataIndicator.setImageDrawable(getResources().getDrawable(R.drawable.green_signal));
+        } else {
+            mobileDataIndicator.setImageDrawable(getResources().getDrawable(R.drawable.red_signal));
+        }
+        if (mBluetoothAdapter == null) {// Device does not support Bluetooth
+        } else if (!mBluetoothAdapter.isEnabled()) {
+            bluetoothIndicator.setImageDrawable(getResources().getDrawable(R.drawable.red_signal));
+        } else {
+            bluetoothIndicator.setImageDrawable(getResources().getDrawable(R.drawable.green_signal));
+        }
+    }
+
+    private final BroadcastReceiver broadcastReceiverForBluetooth = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            if (mBluetoothAdapter == null) {// Device does not support Bluetooth
+            } else if (!mBluetoothAdapter.isEnabled()) {
+                bluetoothIndicator.setImageDrawable(getResources().getDrawable(R.drawable.red_signal));
+            } else {
+                bluetoothIndicator.setImageDrawable(getResources().getDrawable(R.drawable.green_signal));
+            }
+        }
+    };
+    private final BroadcastReceiver broadcastReceiverForWiFi = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            WifiManager wifi = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            if (wifi.isWifiEnabled()) {
+                wiFiIndicator.setImageDrawable(getResources().getDrawable(R.drawable.green_signal));
+            } else {
+                wiFiIndicator.setImageDrawable(getResources().getDrawable(R.drawable.red_signal));
+            }
+        }
+    };
+    private final BroadcastReceiver broadcastReceiverForMobileData = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getApplicationContext().getSystemService(getActivity().getApplicationContext().CONNECTIVITY_SERVICE);
+            NetworkInfo mobileInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+            boolean mobileConnected = mobileInfo.getState() == NetworkInfo.State.CONNECTED;
+            if (mobileConnected) {
+                mobileDataIndicator.setImageDrawable(getResources().getDrawable(R.drawable.green_signal));
+            } else {
+                mobileDataIndicator.setImageDrawable(getResources().getDrawable(R.drawable.red_signal));
+            }
+        }
+    };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().getApplicationContext().unregisterReceiver(broadcastReceiverForBluetooth);
+        getActivity().getApplicationContext().unregisterReceiver(broadcastReceiverForMobileData);
+        getActivity().getApplicationContext().unregisterReceiver(broadcastReceiverForWiFi);
     }
 }

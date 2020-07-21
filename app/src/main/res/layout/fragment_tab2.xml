@@ -7,8 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFF">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/introButton2"
@@ -16,8 +15,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:background="#EA4335"
-            android:padding="10dp"
+            android:background="@drawable/br_inro_bg"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16sp"
             android:text="Introduction"
             android:textAllCaps="false"
             android:textColor="#FFF" />
@@ -32,7 +33,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginRight="10dp"
             android:alpha="0.8"
-            android:background="#EA4335"
+            android:background="@drawable/br_intro_box_bg"
             android:padding="6dp"
             android:text="Android apps can send or receive broadcast messages from the Android system and other Android apps, similar to the publish-subscribe design pattern. These broadcasts are sent when an event of interest occurs. For example, the Android system sends broadcasts when various system events occur, such as when the system boots up or the device starts charging. Apps can also send custom broadcasts, for example, to notify other apps of something that they might be interested in (for example, some new data has been downloaded)."
             android:textColor="#FFF"
@@ -46,8 +47,10 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:background="#EA4335"
-            android:padding="10dp"
+            android:background="@drawable/br_inro_bg"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16sp"
             android:text="Example"
             android:textAllCaps="false"
             android:textColor="#FFF" />
@@ -60,9 +63,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:alpha="0.8"
-            android:background="#EA4335"
-            android:visibility="gone">
+            android:background="#666"
+            android:visibility="visible">
 
 
             <TextView
@@ -73,11 +75,11 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="9dp"
                 android:layout_marginRight="9dp"
-                android:background="#EA4335"
+                android:background="#FFF"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="Try to turn ON/OFF your\nmobile data/WiFi/Bluetooth,\nOn performing these actions, you\nwill be notified about these system\nevents, here:"
-                android:textColor="#FFF"
+                android:textColor="#EA4335"
                 android:visibility="visible" />
 
             <TableLayout
@@ -110,7 +112,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@drawable/green_signal" />
+                        android:id="@+id/mobileDataIndicator"
+                        android:src="@drawable/red_signal" />
                 </TableRow>
 
                 <TableRow
@@ -134,6 +137,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginLeft="10dp"
+                        android:id="@+id/wiFiIndicator"
                         android:src="@drawable/red_signal" />
                 </TableRow>
 
@@ -158,7 +162,8 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@drawable/green_signal" />
+                        android:id="@+id/bluetoothIndicator"
+                        android:src="@drawable/red_signal" />
                 </TableRow>
 
             </TableLayout>
@@ -173,8 +178,10 @@
             android:layout_below="@id/exampleLayout2"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:background="#EA4335"
-            android:padding="10dp"
+            android:background="@drawable/br_inro_bg"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16sp"
             android:text="Further Reading"
             android:textAllCaps="false"
             android:textColor="#FFF" />
@@ -189,7 +196,7 @@
             android:layout_marginRight="10dp"
             android:alpha="0.8"
             android:autoLink="web"
-            android:background="#EA4335"
+            android:background="@drawable/br_intro_box_bg"
             android:padding="8dp"
             android:text="For Further reading of Android BroadcastReceiver,
 visit:https://developer.android.com/guide/components/broadcasts"

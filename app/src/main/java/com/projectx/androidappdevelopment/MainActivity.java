@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                     switch (menuItem.getItemId()){
                         case R.id.page_1:selectedFragment = new tab1();
                             break;
-                        case R.id.page_2: selectedFragment = new ImageDownloader();
+                        case R.id.page_2: selectedFragment = new tab2();
                             break;
                         case R.id.page_3:selectedFragment = new tab3();
                             break;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-   @Override
+   /*@Override
     protected void onStart() {
         super.onStart();
        //if (tab1.toastSwitch.isChecked())
@@ -92,5 +92,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Toast.makeText(getApplicationContext(),"onDestroy()",Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }

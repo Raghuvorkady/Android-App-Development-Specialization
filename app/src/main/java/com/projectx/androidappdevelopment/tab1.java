@@ -48,6 +48,10 @@ public class tab1 extends Fragment {
         furtherReadingButton = (Button) getView().findViewById(R.id.furtherReadingB);
         furtherReadingTextView = (TextView) getView().findViewById(R.id.furtherReadingText);
 
+        String stringTab1 = "Activity in Android";
+        getActivity().setTitle(stringTab1 + "");
+
+        exampleScroller.setVisibility(View.GONE);
         introButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
