@@ -66,10 +66,6 @@ public class tab2 extends Fragment {
         wiFiIndicator = (ImageView) getView().findViewById(R.id.wiFiIndicator);
         mobileDataIndicator = (ImageView) getView().findViewById(R.id.mobileDataIndicator);
 
-        exampleScroller.setVisibility(View.GONE);
-        furtherReadingTextView.setVisibility(View.GONE);
-        //stateChecker();
-
         String stringTab1 = "BroadcastReceiver in Android";
         getActivity().setTitle(stringTab1 + "");
 

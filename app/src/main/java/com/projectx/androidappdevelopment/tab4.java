@@ -84,8 +84,6 @@ public class tab4 extends Fragment {
         String stringTab1 = "ContentProvider in Android";
         getActivity().setTitle(stringTab1 + "");
 
-        exampleScroller.setVisibility(View.GONE);
-        furtherReadingTextView.setVisibility(View.GONE);
 
         introButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)

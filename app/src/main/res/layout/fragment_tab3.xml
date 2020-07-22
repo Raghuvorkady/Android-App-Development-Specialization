@@ -93,6 +93,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="#666"
+                android:layout_marginBottom="10dp"
                 android:padding="5dp">
 
                 <TableRow
@@ -106,23 +108,27 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:text="Ringtone"
+                        android:gravity="center"
                         android:textAlignment="center"
                         android:textColor="#000"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                    <Button
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@drawable/play_button" />
+                        android:id="@+id/playBtn"
+                        android:hapticFeedbackEnabled="true"
+                        android:soundEffectsEnabled="true"
+                        android:background="@drawable/play_button" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:gravity="center">
 
                     <TextView
@@ -132,14 +138,18 @@
                         android:text="Alarm"
                         android:textAlignment="center"
                         android:textColor="#000"
+                        android:gravity="center"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                    <Button
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@drawable/pause_button" />
+                        android:id="@+id/pauseBtn"
+                        android:hapticFeedbackEnabled="true"
+                        android:soundEffectsEnabled="true"
+                        android:background="@drawable/pause_button" />
                 </TableRow>
 
             </TableLayout>

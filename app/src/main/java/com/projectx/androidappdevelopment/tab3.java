@@ -1,5 +1,8 @@
 package com.projectx.androidappdevelopment;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -29,7 +32,7 @@ public class tab3 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private Button introButton, exampleButton, furtherReadingButton;
+    private Button introButton, exampleButton, furtherReadingButton, playBtn, pauseBtn;
     private RelativeLayout exampleScroller;
     private TextView introText, furtherReadingTextView;
     public static boolean INTRO_ENABLED = true;
@@ -80,13 +83,14 @@ public class tab3 extends Fragment {
         exampleScroller = (RelativeLayout) getView().findViewById(R.id.exampleLayout3);
         furtherReadingButton = (Button) getView().findViewById(R.id.furtherReadingB3);
         furtherReadingTextView = (TextView) getView().findViewById(R.id.furtherReadingText3);
+        playBtn = (Button) getView().findViewById(R.id.playBtn);
+        pauseBtn = (Button) getView().findViewById(R.id.pauseBtn);
 
         String stringTab1 = "Services in Android";
         getActivity().setTitle(stringTab1 + "");
 
-        exampleScroller.setVisibility(View.GONE);
-        furtherReadingTextView.setVisibility(View.GONE);
-
+        playBtn.setOnClickListener(startBtn);
+        pauseBtn.setOnClickListener(stopBtn);
         introButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
@@ -110,6 +114,33 @@ public class tab3 extends Fragment {
                 furtherReadingBtnStateCheck(!FURTHER_READING_ENABLED);
             }
         });
+    }
+    private View.OnClickListener startBtn = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (!isMyServiceRunning(MyRingtoneService.class))
+                getActivity().startService(new Intent(getActivity().getApplicationContext(), MyRingtoneService.class));
+            else getActivity().stopService(new Intent(getActivity().getApplicationContext(), MyRingtoneService.class));
+        }
+    };
+
+    private View.OnClickListener stopBtn = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (!isMyServiceRunning(MyAlarmService.class))
+                getActivity().startService(new Intent(getActivity().getApplicationContext(), MyAlarmService.class));
+            else getActivity().stopService(new Intent(getActivity().getApplicationContext(), MyAlarmService.class));
+        }
+    };
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
