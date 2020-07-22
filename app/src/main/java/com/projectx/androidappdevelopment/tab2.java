@@ -13,6 +13,7 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
@@ -43,7 +44,6 @@ public class tab2 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -87,15 +87,7 @@ public class tab2 extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
-                if (INTRO_ENABLED == false) {
-                    introButton.setBackground(getResources().getDrawable(R.drawable.br_inro_bg));
-                    introText.setVisibility(View.VISIBLE);
-                    INTRO_ENABLED = true;
-                } else {
-                    introButton.setBackground(getResources().getDrawable(R.drawable.br_intro_btn_off));
-                    introText.setVisibility(View.GONE);
-                    INTRO_ENABLED = false;
-                }
+                introBtnStateCheck(!INTRO_ENABLED);
             }
         });
 
@@ -103,15 +95,7 @@ public class tab2 extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
-                if (EXAMPLE_ENABLED == false) {
-                    exampleButton.setBackground(getResources().getDrawable(R.drawable.br_inro_bg));
-                    exampleScroller.setVisibility(View.VISIBLE);
-                    EXAMPLE_ENABLED = true;
-                } else {
-                    exampleButton.setBackground(getResources().getDrawable(R.drawable.br_intro_btn_off));
-                    exampleScroller.setVisibility(View.GONE);
-                    EXAMPLE_ENABLED = false;
-                }
+                exampleBtnStateCheck(!EXAMPLE_ENABLED);
             }
         });
 
@@ -119,17 +103,48 @@ public class tab2 extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
-                if (FURTHER_READING_ENABLED == false) {
-                    furtherReadingButton.setBackground(getResources().getDrawable(R.drawable.br_inro_bg));
-                    furtherReadingTextView.setVisibility(View.VISIBLE);
-                    FURTHER_READING_ENABLED = true;
-                } else {
-                    furtherReadingButton.setBackground(getResources().getDrawable(R.drawable.br_intro_btn_off));
-                    furtherReadingTextView.setVisibility(View.GONE);
-                    FURTHER_READING_ENABLED = false;
-                }
+                furtherReadingBtnStateCheck(!FURTHER_READING_ENABLED);
             }
         });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void furtherReadingBtnStateCheck(boolean b) {
+        if (b) {
+            furtherReadingButton.setBackground(getResources().getDrawable(R.drawable.br_inro_bg));
+            furtherReadingTextView.setVisibility(View.VISIBLE);
+            FURTHER_READING_ENABLED = true;
+        } else {
+            furtherReadingButton.setBackground(getResources().getDrawable(R.drawable.br_intro_btn_off));
+            furtherReadingTextView.setVisibility(View.GONE);
+            FURTHER_READING_ENABLED = false;
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void exampleBtnStateCheck(boolean b) {
+        if (b) {
+            exampleButton.setBackground(getResources().getDrawable(R.drawable.br_inro_bg));
+            exampleScroller.setVisibility(View.VISIBLE);
+            EXAMPLE_ENABLED = true;
+        } else {
+            exampleButton.setBackground(getResources().getDrawable(R.drawable.br_intro_btn_off));
+            exampleScroller.setVisibility(View.GONE);
+            EXAMPLE_ENABLED = false;
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void introBtnStateCheck(Boolean b) {
+        if (b) {
+            introButton.setBackground(getResources().getDrawable(R.drawable.br_inro_bg));
+            introText.setVisibility(View.VISIBLE);
+            INTRO_ENABLED = true;
+        } else {
+            introButton.setBackground(getResources().getDrawable(R.drawable.br_intro_btn_off));
+            introText.setVisibility(View.GONE);
+            INTRO_ENABLED = false;
+        }
     }
 
     private void stateChecker() {
@@ -196,6 +211,15 @@ public class tab2 extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        introBtnStateCheck(INTRO_ENABLED);
+        exampleBtnStateCheck(EXAMPLE_ENABLED);
+        furtherReadingBtnStateCheck(FURTHER_READING_ENABLED);
     }
 
     @Override
