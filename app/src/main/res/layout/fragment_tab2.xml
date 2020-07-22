@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     tools:context=".tab2">
 
     <RelativeLayout
@@ -16,12 +17,14 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/br_inro_bg"
+            android:hapticFeedbackEnabled="true"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:textSize="16sp"
+            android:textStyle="bold"
             android:text="Introduction"
             android:textAllCaps="false"
-            android:textColor="#FFF" />
+            android:textColor="#FFF"/>
 
         <TextView
             android:id="@+id/introText2"
@@ -37,6 +40,7 @@
             android:padding="6dp"
             android:text="Android apps can send or receive broadcast messages from the Android system and other Android apps, similar to the publish-subscribe design pattern. These broadcasts are sent when an event of interest occurs. For example, the Android system sends broadcasts when various system events occur, such as when the system boots up or the device starts charging. Apps can also send custom broadcasts, for example, to notify other apps of something that they might be interested in (for example, some new data has been downloaded)."
             android:textColor="#FFF"
+            android:textIsSelectable="true"
             android:visibility="visible" />
 
         <Button
@@ -47,10 +51,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/br_inro_bg"
+            android:background="@drawable/br_intro_btn_off"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:textSize="16sp"
+            android:textStyle="bold"
             android:text="Example"
             android:textAllCaps="false"
             android:textColor="#FFF" />
@@ -178,10 +183,11 @@
             android:layout_below="@id/exampleLayout2"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/br_inro_bg"
+            android:background="@drawable/br_intro_btn_off"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:textSize="16sp"
+            android:textStyle="bold"
             android:text="Further Reading"
             android:textAllCaps="false"
             android:textColor="#FFF" />
@@ -201,6 +207,6 @@
             android:text="For Further reading of Android BroadcastReceiver,
 visit:https://developer.android.com/guide/components/broadcasts"
             android:textColor="#FFF"
-            android:visibility="gone" />
+            android:visibility="visible" />
     </RelativeLayout>
 </ScrollView>

@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     tools:context=".tab3">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFF">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/introButton3"
@@ -16,8 +16,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:background="#FBBC05"
-            android:padding="10dp"
+            android:background="@drawable/s_intro_bg"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:text="Introduction"
             android:textAllCaps="false"
             android:textColor="#000" />
@@ -32,7 +35,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:alpha="0.8"
-            android:background="#FBBC05"
+            android:background="@drawable/s_intro_box_bg"
             android:padding="6dp"
             android:text="A Service is an application component that can perform long-running operations in the background. It does not provide a user interface. Once started, a service might continue running for some time, even after the user switches to another application. Additionally, a component can bind to a service to interact with it and even perform interprocess communication (IPC). For example, a service can handle network transactions, play music, perform file I/O, or interact with a content provider, all from the background."
             android:textColor="#000"
@@ -46,8 +49,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:background="#FBBC05"
-            android:padding="10dp"
+            android:background="@drawable/s_intro_btn_off"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:text="Example"
             android:textAllCaps="false"
             android:textColor="#000" />
@@ -61,8 +67,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:alpha="0.8"
-            android:background="#FBBC05"
-            android:visibility="gone">
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/s_intro_box_bg"
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/infoText"
@@ -147,8 +154,11 @@
             android:layout_below="@id/exampleLayout3"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:background="#FBBC05"
-            android:padding="10dp"
+            android:background="@drawable/s_intro_btn_off"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:text="Further Reading"
             android:textAllCaps="false"
             android:textColor="#000" />
@@ -163,11 +173,11 @@
             android:layout_marginRight="10dp"
             android:alpha="0.8"
             android:autoLink="web"
-            android:background="#FBBC05"
+            android:background="@drawable/s_intro_box_bg"
             android:padding="8dp"
             android:text="For Further reading of Android Services,
 visit:https://developer.android.com/guide/components/services"
             android:textColor="#000"
-            android:visibility="gone" />
+            android:visibility="visible" />
     </RelativeLayout>
 </ScrollView>

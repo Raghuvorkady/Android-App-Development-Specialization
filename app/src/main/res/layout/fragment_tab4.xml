@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     tools:context=".tab4">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFF">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/introButton4"
@@ -16,8 +16,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:background="#34A853"
-            android:padding="10dp"
+            android:background="@drawable/cp_intro_bg"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:text="Introduction"
             android:textAllCaps="false"
             android:textColor="#FFF" />
@@ -32,7 +35,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginRight="10dp"
             android:alpha="0.8"
-            android:background="#34A853"
+            android:background="@drawable/cp_intro_box_bg"
             android:padding="6dp"
             android:text="A content provider manages access to a central repository of data. A provider is part of an Android application, which often provides its own UI for working with the data. However, content providers are primarily intended to be used by other applications, which access the provider using a provider client object. Together, providers and provider clients offer a consistent, standard interface to data that also handles inter-process communication and secure data access."
             android:textColor="#FFF"
@@ -46,8 +49,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:background="#34A853"
-            android:padding="10dp"
+            android:background="@drawable/cp_intro_btn_off"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:text="Example"
             android:textAllCaps="false"
             android:textColor="#FFF" />
@@ -61,8 +67,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:alpha="0.8"
-            android:background="#34A853"
-            android:visibility="gone">
+            android:background="@drawable/cp_intro_box_bg"
+            android:visibility="visible">
 
             <TableLayout
                 android:id="@+id/exampleTable"
@@ -177,8 +183,11 @@
             android:layout_below="@id/exampleLayout4"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:background="#34A853"
-            android:padding="10dp"
+            android:background="@drawable/cp_intro_btn_off"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:text="Further Reading"
             android:textAllCaps="false"
             android:textColor="#FFF" />
@@ -193,11 +202,11 @@
             android:layout_marginRight="10dp"
             android:alpha="0.8"
             android:autoLink="web"
-            android:background="#34A853"
+            android:background="@drawable/cp_intro_box_bg"
             android:padding="8dp"
             android:text="For Further reading of Android ContentProvider,
 visit:https://developer.android.com/guide/topics/providers/content-provider-basics"
             android:textColor="#FFF"
-            android:visibility="gone" />
+            android:visibility="visible" />
     </RelativeLayout>
 </ScrollView>

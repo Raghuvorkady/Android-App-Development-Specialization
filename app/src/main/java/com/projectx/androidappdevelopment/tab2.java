@@ -10,8 +10,10 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
@@ -65,6 +67,7 @@ public class tab2 extends Fragment {
         mobileDataIndicator = (ImageView) getView().findViewById(R.id.mobileDataIndicator);
 
         exampleScroller.setVisibility(View.GONE);
+        furtherReadingTextView.setVisibility(View.GONE);
         //stateChecker();
 
         String stringTab1 = "BroadcastReceiver in Android";
@@ -81,12 +84,15 @@ public class tab2 extends Fragment {
         getActivity().getApplicationContext().registerReceiver(broadcastReceiverForMobileData, mFilter);
 
         introButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
                 if (INTRO_ENABLED == false) {
+                    introButton.setBackground(getResources().getDrawable(R.drawable.br_inro_bg));
                     introText.setVisibility(View.VISIBLE);
                     INTRO_ENABLED = true;
                 } else {
+                    introButton.setBackground(getResources().getDrawable(R.drawable.br_intro_btn_off));
                     introText.setVisibility(View.GONE);
                     INTRO_ENABLED = false;
                 }
@@ -94,13 +100,15 @@ public class tab2 extends Fragment {
         });
 
         exampleButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
                 if (EXAMPLE_ENABLED == false) {
-                    //stateChecker();
+                    exampleButton.setBackground(getResources().getDrawable(R.drawable.br_inro_bg));
                     exampleScroller.setVisibility(View.VISIBLE);
                     EXAMPLE_ENABLED = true;
                 } else {
+                    exampleButton.setBackground(getResources().getDrawable(R.drawable.br_intro_btn_off));
                     exampleScroller.setVisibility(View.GONE);
                     EXAMPLE_ENABLED = false;
                 }
@@ -108,12 +116,15 @@ public class tab2 extends Fragment {
         });
 
         furtherReadingButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
                 if (FURTHER_READING_ENABLED == false) {
+                    furtherReadingButton.setBackground(getResources().getDrawable(R.drawable.br_inro_bg));
                     furtherReadingTextView.setVisibility(View.VISIBLE);
                     FURTHER_READING_ENABLED = true;
                 } else {
+                    furtherReadingButton.setBackground(getResources().getDrawable(R.drawable.br_intro_btn_off));
                     furtherReadingTextView.setVisibility(View.GONE);
                     FURTHER_READING_ENABLED = false;
                 }

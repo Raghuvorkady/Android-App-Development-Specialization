@@ -3,13 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tab1"
-    android:background="#FFF">
+    android:background="#FFF"
+    tools:context=".tab1">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="1">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/introButton"
@@ -21,11 +20,11 @@
             android:hapticFeedbackEnabled="true"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:text="Introduction"
             android:textAllCaps="false"
             android:textColor="#FFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:tooltipText="Intoduction button" />
 
         <TextView
@@ -52,20 +51,20 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/activity_intro_bg"
+            android:background="@drawable/activity_intro_btn_off"
             android:hapticFeedbackEnabled="true"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textSize="16sp"
             android:text="Example"
             android:textAllCaps="false"
             android:textColor="#FFF"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <RelativeLayout
             android:id="@+id/exampleLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@id/exampleButton"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
@@ -219,7 +218,7 @@
             android:layout_below="@id/exampleLayout"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/activity_intro_bg"
+            android:background="@drawable/activity_intro_btn_off"
             android:hapticFeedbackEnabled="true"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -228,7 +227,7 @@
             android:textColor="#FFF"
             android:textSize="16sp"
             android:textStyle="bold" />
-
+        <!-- android:textSelectHandle="#4285F4" -->
         <TextView
             android:id="@+id/furtherReadingText"
             android:layout_width="match_parent"
@@ -243,6 +242,6 @@
             android:padding="8dp"
             android:text="For Further reading of Android Activity and it’s lifecycle, visit:\nhttps://developer.android.com/guide/components/activities/intro-activities"
             android:textColor="#FFF"
-            android:visibility="gone" />
+            android:visibility="visible" />
     </RelativeLayout>
 </ScrollView>
