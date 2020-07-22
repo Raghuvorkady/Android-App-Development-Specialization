@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF"
+    android:background="#98D2A8"
     tools:context=".tab4">
 
     <RelativeLayout
@@ -19,11 +19,11 @@
             android:background="@drawable/cp_intro_bg"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:text="Introduction"
             android:textAllCaps="false"
-            android:textColor="#FFF" />
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/introText4"
@@ -52,11 +52,11 @@
             android:background="@drawable/cp_intro_btn_off"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:text="Example"
             android:textAllCaps="false"
-            android:textColor="#FFF" />
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:id="@+id/exampleLayout4"
@@ -66,8 +66,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:alpha="0.8"
-            android:background="@drawable/cp_intro_box_bg"
+            android:background="#666"
+            android:padding="10dp"
             android:visibility="visible">
 
             <TableLayout
@@ -77,101 +77,52 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:paddingTop="5dp">
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginBottom="10dp">
+                    android:gravity="center">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginRight="5dp"
+                        android:background="@drawable/cp_save_menu_unselected"
+                        android:gravity="center"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:text="Save contacts"
                         android:textAlignment="center"
                         android:textColor="#FFF"
-                        android:background="#777"
-                        android:padding="5dp"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/cp_view_menu_selected"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="5dp"
                         android:text="View contacts"
                         android:textAlignment="center"
                         android:textColor="#FFF"
-                        android:padding="5dp"
-                        android:background="#999"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
                 </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center">
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="Enter your name:"
-                        android:textColor="#FFF"
-                        android:textSize="12sp"/>
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center">
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="Enter your phone:"
-                        android:textColor="#FFF"
-                        android:textSize="12sp"/>
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="Enter your email:"
-                        android:textColor="#FFF"
-                        android:textSize="12sp"/>
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="right"
-                    android:gravity="right">
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Save"
-                        android:textColor="#FFF"
-                        android:background="#444"
-                        android:textStyle="bold" />
-
-                </TableRow>
-
             </TableLayout>
+
+            <include
+                layout="@layout/fragment_save_contacts"
+                android:layout_below="@id/exampleTable"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"/>
 
         </RelativeLayout>
 
@@ -186,11 +137,11 @@
             android:background="@drawable/cp_intro_btn_off"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:text="Further Reading"
             android:textAllCaps="false"
-            android:textColor="#FFF" />
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/furtherReadingText4"
@@ -201,6 +152,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:alpha="0.8"
+            android:textColorLink="@color/white"
             android:autoLink="web"
             android:background="@drawable/cp_intro_box_bg"
             android:padding="8dp"

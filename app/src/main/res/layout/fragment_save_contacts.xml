@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SaveContactsFragment">
+
+            <TableLayout
+                android:id="@+id/exampleTableContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/contact_box_bg">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp">
+
+                    <EditText
+                        android:background="@drawable/contact_textbox"
+                        android:gravity="center|start"
+                        android:hint="Enter your name:"
+                        android:inputType="textPersonName"
+                        android:paddingLeft="10dp"
+                        android:textColor="#555"
+                        android:textSize="14sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp">
+
+                    <EditText
+                        android:background="@drawable/contact_textbox"
+                        android:gravity="center|start"
+                        android:hint="Enter your phone:"
+                        android:inputType="phone"
+                        android:paddingLeft="10dp"
+                        android:textColor="#555"
+                        android:textSize="14sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp">
+
+                    <EditText
+                        android:background="@drawable/contact_textbox"
+                        android:gravity="center|start"
+                        android:hint="Enter your email:"
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="10dp"
+                        android:textColor="#555"
+                        android:textSize="14sp" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginRight="20dp">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:background="@drawable/button_ripple_efx"
+                        android:text="Save"
+                        android:clickable="true"
+                        android:hapticFeedbackEnabled="true"
+                        android:textColor="#FFF"
+                        android:textStyle="bold" />
+                    <!--android:foreground="?attr/selectableItemBackground"-->
+                </TableRow>
+
+            </TableLayout>
+
+
+
+</RelativeLayout>

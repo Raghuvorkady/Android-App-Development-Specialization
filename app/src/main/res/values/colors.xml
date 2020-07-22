@@ -9,4 +9,5 @@
     <color name="red">#EA4335</color>
     <color name="green">#34A853</color>
     <color name="white">#FFFFFF</color>
+    <color name="ripple_white">#C4C4C4</color>
 </resources>
