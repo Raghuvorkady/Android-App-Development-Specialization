@@ -68,7 +68,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:background="#666"
+            android:background="@drawable/br_intro_box_bg"
             android:visibility="visible">
 
 
@@ -95,6 +95,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="#666"
+                android:layout_marginBottom="10dp"
                 android:padding="5dp">
 
                 <TableRow

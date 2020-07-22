@@ -32,12 +32,13 @@ public class tab3 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private Button introButton, exampleButton, furtherReadingButton, playBtn, pauseBtn;
+    private Button introButton, exampleButton, furtherReadingButton, ringtoneButton, alarmButton;
     private RelativeLayout exampleScroller;
-    private TextView introText, furtherReadingTextView;
+    private TextView introText, furtherReadingTextView, ringtoneText, alarmText;
     public static boolean INTRO_ENABLED = true;
     public static boolean EXAMPLE_ENABLED = false;
     public static boolean FURTHER_READING_ENABLED = false;
+
     public tab3() {
         // Required empty public constructor
     }
@@ -75,6 +76,7 @@ public class tab3 extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tab3, container, false);
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         introButton = (Button) getView().findViewById(R.id.introButton3);
@@ -83,14 +85,16 @@ public class tab3 extends Fragment {
         exampleScroller = (RelativeLayout) getView().findViewById(R.id.exampleLayout3);
         furtherReadingButton = (Button) getView().findViewById(R.id.furtherReadingB3);
         furtherReadingTextView = (TextView) getView().findViewById(R.id.furtherReadingText3);
-        playBtn = (Button) getView().findViewById(R.id.playBtn);
-        pauseBtn = (Button) getView().findViewById(R.id.pauseBtn);
+        ringtoneButton = (Button) getView().findViewById(R.id.ringtoneButton);
+        alarmButton = (Button) getView().findViewById(R.id.alarmButton);
+        ringtoneText = (TextView) getView().findViewById(R.id.ringtoneText);
+        alarmText = (TextView) getView().findViewById(R.id.alarmText);
 
         String stringTab1 = "Services in Android";
         getActivity().setTitle(stringTab1 + "");
 
-        playBtn.setOnClickListener(startBtn);
-        pauseBtn.setOnClickListener(stopBtn);
+        ringtoneButton.setOnClickListener(startBtn);
+        alarmButton.setOnClickListener(stopBtn);
         introButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
@@ -115,23 +119,57 @@ public class tab3 extends Fragment {
             }
         });
     }
+
     private View.OnClickListener startBtn = new View.OnClickListener() {
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public void onClick(View v) {
-            if (!isMyServiceRunning(MyRingtoneService.class))
+            if (!isMyServiceRunning(MyRingtoneService.class)) {
                 getActivity().startService(new Intent(getActivity().getApplicationContext(), MyRingtoneService.class));
-            else getActivity().stopService(new Intent(getActivity().getApplicationContext(), MyRingtoneService.class));
+            } else {
+                getActivity().stopService(new Intent(getActivity().getApplicationContext(), MyRingtoneService.class));
+            }
+            setRingtoneButton();
         }
     };
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void setRingtoneButton() {
+        if (isMyServiceRunning(MyRingtoneService.class)) {
+            ringtoneButton.setBackground(getResources().getDrawable(R.drawable.pause_button));
+            ringtoneText.setTextColor(getResources().getColor(R.color.yellow));
+
+        } else {
+            ringtoneButton.setBackground(getResources().getDrawable(R.drawable.play_button));
+            ringtoneText.setTextColor(getResources().getColor(R.color.white));
+        }
+    }
+
     private View.OnClickListener stopBtn = new View.OnClickListener() {
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public void onClick(View v) {
-            if (!isMyServiceRunning(MyAlarmService.class))
+            if (!isMyServiceRunning(MyAlarmService.class)) {
                 getActivity().startService(new Intent(getActivity().getApplicationContext(), MyAlarmService.class));
-            else getActivity().stopService(new Intent(getActivity().getApplicationContext(), MyAlarmService.class));
+                alarmButton.setBackground(getResources().getDrawable(R.drawable.pause_button));
+            } else {
+                getActivity().stopService(new Intent(getActivity().getApplicationContext(), MyAlarmService.class));
+                alarmButton.setBackground(getResources().getDrawable(R.drawable.play_button));
+            }
+            setAlarmButton();
         }
     };
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void setAlarmButton() {
+        if (isMyServiceRunning(MyAlarmService.class)) {
+            alarmButton.setBackground(getResources().getDrawable(R.drawable.pause_button));
+            alarmText.setTextColor(getResources().getColor(R.color.yellow));
+        } else {
+            alarmButton.setBackground(getResources().getDrawable(R.drawable.play_button));
+            alarmText.setTextColor(getResources().getColor(R.color.white));
+        }
+    }
 
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
@@ -189,5 +227,7 @@ public class tab3 extends Fragment {
         introBtnStateCheck(INTRO_ENABLED);
         exampleBtnStateCheck(EXAMPLE_ENABLED);
         furtherReadingBtnStateCheck(FURTHER_READING_ENABLED);
+        setRingtoneButton();
+        setAlarmButton();
     }
 }

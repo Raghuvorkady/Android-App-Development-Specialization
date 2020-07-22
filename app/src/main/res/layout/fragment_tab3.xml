@@ -19,11 +19,11 @@
             android:background="@drawable/s_intro_bg"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:text="Introduction"
             android:textAllCaps="false"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/introText3"
@@ -52,22 +52,22 @@
             android:background="@drawable/s_intro_btn_off"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:text="Example"
             android:textAllCaps="false"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:id="@+id/exampleLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/exampleButton3"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:alpha="0.8"
-            android:layout_centerHorizontal="true"
             android:background="@drawable/s_intro_box_bg"
             android:visibility="visible">
 
@@ -77,11 +77,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_marginTop="5dp"
-                android:background="#FBBC05"
+                android:background="#FFF"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="Tap on the ▶ to play ringtone/alarm\nsound in Android"
-                android:textColor="#000"
+                android:textColor="#FBBC05"
                 android:visibility="visible" />
 
 
@@ -93,13 +93,13 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="#666"
                 android:layout_marginBottom="10dp"
-                android:padding="5dp">
+                android:background="#666"
+                android:padding="10dp">
 
                 <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center">
 
@@ -107,26 +107,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:text="Ringtone"
                         android:gravity="center"
+                        android:text="Ringtone"
                         android:textAlignment="center"
-                        android:textColor="#000"
-                        android:textSize="16sp"
+                        android:textColor="#FFF"
+                        android:id="@+id/ringtoneText"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <Button
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:id="@+id/ringtoneButton"
+                        android:layout_width="50dp"
+                        android:layout_height="48dp"
                         android:layout_marginLeft="10dp"
-                        android:id="@+id/playBtn"
+                        android:background="@drawable/play_button"
                         android:hapticFeedbackEnabled="true"
-                        android:soundEffectsEnabled="true"
-                        android:background="@drawable/play_button" />
+                        android:soundEffectsEnabled="true" />
                 </TableRow>
 
                 <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
                     android:gravity="center">
@@ -135,21 +136,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:gravity="center"
                         android:text="Alarm"
                         android:textAlignment="center"
-                        android:textColor="#000"
-                        android:gravity="center"
-                        android:textSize="16sp"
+                        android:textColor="#FFF"
+                        android:id="@+id/alarmText"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <Button
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:id="@+id/alarmButton"
+                        android:layout_width="50dp"
+                        android:layout_height="48dp"
                         android:layout_marginLeft="10dp"
-                        android:id="@+id/pauseBtn"
+                        android:background="@drawable/play_button"
                         android:hapticFeedbackEnabled="true"
-                        android:soundEffectsEnabled="true"
-                        android:background="@drawable/pause_button" />
+                        android:soundEffectsEnabled="true" />
                 </TableRow>
 
             </TableLayout>
@@ -167,11 +169,11 @@
             android:background="@drawable/s_intro_btn_off"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:text="Further Reading"
             android:textAllCaps="false"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/furtherReadingText3"
