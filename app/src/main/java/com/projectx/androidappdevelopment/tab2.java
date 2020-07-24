@@ -1,5 +1,6 @@
 package com.projectx.androidappdevelopment;
 
+import android.app.ActionBar;
 import android.app.usage.NetworkStats;
 import android.app.usage.NetworkStatsManager;
 import android.bluetooth.BluetoothAdapter;
@@ -26,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 public class tab2 extends Fragment {
 
@@ -36,7 +38,7 @@ public class tab2 extends Fragment {
     public static boolean INTRO_ENABLED = true;
     public static boolean EXAMPLE_ENABLED = false;
     public static boolean FURTHER_READING_ENABLED = false;
-
+    ActionBar toolbar;
     public tab2() {
         // Required empty public constructor
     }
@@ -53,6 +55,7 @@ public class tab2 extends Fragment {
         return inflater.inflate(R.layout.fragment_tab2, container, false);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
@@ -66,9 +69,12 @@ public class tab2 extends Fragment {
         wiFiIndicator = (ImageView) getView().findViewById(R.id.wiFiIndicator);
         mobileDataIndicator = (ImageView) getView().findViewById(R.id.mobileDataIndicator);
 
+        toolbar = getActivity().getActionBar();
+
         String stringTab1 = "BroadcastReceiver in Android";
         getActivity().setTitle(stringTab1 + "");
-
+        getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.darkRed));
+        getActivity().setTitleColor(getResources().getColor(R.color.red));
 
         IntentFilter bfilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
         getActivity().getApplicationContext().registerReceiver(broadcastReceiverForBluetooth, bfilter);

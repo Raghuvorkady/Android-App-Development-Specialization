@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <Button
             android:id="@+id/introButton4"
@@ -34,9 +35,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="10dp"
-            android:alpha="0.8"
             android:background="@drawable/cp_intro_box_bg"
-            android:padding="6dp"
+            android:padding="10dp"
             android:text="A content provider manages access to a central repository of data. A provider is part of an Android application, which often provides its own UI for working with the data. However, content providers are primarily intended to be used by other applications, which access the provider using a provider client object. Together, providers and provider clients offer a consistent, standard interface to data that also handles inter-process communication and secure data access."
             android:textColor="#FFF"
             android:visibility="visible" />
@@ -66,7 +66,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:background="#666"
+            android:background="@drawable/cp_example_box"
             android:padding="10dp"
             android:visibility="visible">
 
@@ -86,43 +86,46 @@
                     android:layout_gravity="center"
                     android:gravity="center">
 
-                    <TextView
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:background="@drawable/cp_save_menu_unselected"
                         android:gravity="center"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
+                        android:textAllCaps="false"
                         android:text="Save contacts"
+                        android:id="@+id/saveContactsTab"
                         android:textAlignment="center"
                         android:textColor="#FFF"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <Button
+                        android:id="@+id/viewContactsTab"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:background="@drawable/cp_view_menu_selected"
                         android:paddingLeft="15dp"
                         android:paddingTop="5dp"
                         android:paddingRight="15dp"
                         android:paddingBottom="5dp"
                         android:text="View contacts"
                         android:textAlignment="center"
+                        android:textAllCaps="false"
                         android:textColor="#FFF"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </TableRow>
             </TableLayout>
-
-            <include
-                layout="@layout/fragment_save_contacts"
-                android:layout_below="@id/exampleTable"
-                android:layout_height="wrap_content"
+            <FrameLayout
+                android:id="@+id/frameForContacts"
                 android:layout_width="match_parent"
-                android:layout_centerHorizontal="true"/>
+                android:layout_height="match_parent"
+                android:layout_below="@id/exampleTable">
+
+            </FrameLayout>
+
 
         </RelativeLayout>
 
@@ -151,11 +154,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:alpha="0.8"
             android:textColorLink="@color/white"
             android:autoLink="web"
             android:background="@drawable/cp_intro_box_bg"
-            android:padding="8dp"
+            android:padding="10dp"
             android:text="For Further reading of Android ContentProvider,
 visit:https://developer.android.com/guide/topics/providers/content-provider-basics"
             android:textColor="#FFF"

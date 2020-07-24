@@ -10,4 +10,10 @@
     <color name="green">#34A853</color>
     <color name="white">#FFFFFF</color>
     <color name="ripple_white">#C4C4C4</color>
+    <color name="lightBlue">#9FC1F8</color>
+    <color name="darkBlue">#607494</color>
+    <color name="darkRed">#91615C</color>
+    <color name="darkYellow">#97844E</color>
+    <color name="darkGreen">#5C7E65</color>
+    <color name="black">#000</color>
 </resources>

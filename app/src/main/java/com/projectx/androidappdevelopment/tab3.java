@@ -77,6 +77,7 @@ public class tab3 extends Fragment {
         return inflater.inflate(R.layout.fragment_tab3, container, false);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         introButton = (Button) getView().findViewById(R.id.introButton3);
@@ -92,6 +93,8 @@ public class tab3 extends Fragment {
 
         String stringTab1 = "Services in Android";
         getActivity().setTitle(stringTab1 + "");
+        getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.darkYellow));
+        getActivity().setTitleColor(getResources().getColor(R.color.yellow));
 
         ringtoneButton.setOnClickListener(startBtn);
         alarmButton.setOnClickListener(stopBtn);
@@ -137,11 +140,11 @@ public class tab3 extends Fragment {
     private void setRingtoneButton() {
         if (isMyServiceRunning(MyRingtoneService.class)) {
             ringtoneButton.setBackground(getResources().getDrawable(R.drawable.pause_button));
-            ringtoneText.setTextColor(getResources().getColor(R.color.yellow));
+            ringtoneText.setTextColor(getResources().getColor(R.color.blue));
 
         } else {
             ringtoneButton.setBackground(getResources().getDrawable(R.drawable.play_button));
-            ringtoneText.setTextColor(getResources().getColor(R.color.white));
+            ringtoneText.setTextColor(getResources().getColor(R.color.black));
         }
     }
 
@@ -164,10 +167,10 @@ public class tab3 extends Fragment {
     private void setAlarmButton() {
         if (isMyServiceRunning(MyAlarmService.class)) {
             alarmButton.setBackground(getResources().getDrawable(R.drawable.pause_button));
-            alarmText.setTextColor(getResources().getColor(R.color.yellow));
+            alarmText.setTextColor(getResources().getColor(R.color.blue));
         } else {
             alarmButton.setBackground(getResources().getDrawable(R.drawable.play_button));
-            alarmText.setTextColor(getResources().getColor(R.color.white));
+            alarmText.setTextColor(getResources().getColor(R.color.black));
         }
     }
 

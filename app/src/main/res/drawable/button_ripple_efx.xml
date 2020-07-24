@@ -17,13 +17,8 @@
             <corners
                 android:radius="20dp"/>
 
-            <gradient
-                android:angle="90"
-                android:type="linear"
-                android:centerY="0.8"
-                android:startColor="#34A853"
-                android:centerColor="#34A853"
-                android:endColor="#277E3E"/>
+            <solid
+                android:color="@color/green"/>
         </shape>
     </item>
 </ripple>

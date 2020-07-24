@@ -1,5 +1,7 @@
 package com.projectx.androidappdevelopment;
 
+import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -29,12 +31,15 @@ public class tab4 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private Button introButton, exampleButton, furtherReadingButton;
+    private Button introButton, exampleButton, furtherReadingButton, saveContactsTab, viewContactsTab;
     private RelativeLayout exampleScroller;
     private TextView introText, furtherReadingTextView;
     public static boolean INTRO_ENABLED = true;
     public static boolean EXAMPLE_ENABLED = false;
     public static boolean FURTHER_READING_ENABLED = false;
+    public static boolean SAVE_CONTACT_ENABLED = false;
+    public static int SAVE_CONTACT_ENABLED_CHECKER = 1;
+
     public tab4() {
         // Required empty public constructor
     }
@@ -72,6 +77,7 @@ public class tab4 extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tab4, container, false);
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         introButton = (Button) getView().findViewById(R.id.introButton4);
@@ -80,10 +86,21 @@ public class tab4 extends Fragment {
         exampleScroller = (RelativeLayout) getView().findViewById(R.id.exampleLayout4);
         furtherReadingButton = (Button) getView().findViewById(R.id.furtherReadingB4);
         furtherReadingTextView = (TextView) getView().findViewById(R.id.furtherReadingText4);
+        viewContactsTab = (Button) getView().findViewById(R.id.viewContactsTab);
+        saveContactsTab = (Button) getView().findViewById(R.id.saveContactsTab);
+
+        saveContactsTab.setBackground(getResources().getDrawable(R.drawable.cp_save_menu_selected));
+        viewContactsTab.setBackground(getResources().getDrawable(R.drawable.cp_view_menu_unselected));
+
+        initialiseFrame(SAVE_CONTACT_ENABLED);
 
         String stringTab1 = "ContentProvider in Android";
         getActivity().setTitle(stringTab1 + "");
+        getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.darkGreen));
+        getActivity().setTitleColor(getResources().getColor(R.color.green));
 
+        viewContactsTab.setOnClickListener(viewContactsTabObject);
+        saveContactsTab.setOnClickListener(saveContactsTabObject);
 
         introButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -108,6 +125,48 @@ public class tab4 extends Fragment {
                 furtherReadingBtnStateCheck(!FURTHER_READING_ENABLED);
             }
         });
+    }
+
+    private void initialiseFrame(Boolean b) {
+        //TODO check for clicked button
+
+        //if (saveContactsTab.getBackground() != null && saveContactsTab.getBackground().getConstantState().equals(getResources().getDrawable(R.drawable.cp_save_menu_selected).getConstantState())) {
+        if (b){
+            callSaveContactsFragment();
+            SAVE_CONTACT_ENABLED = false;
+        } else {
+            callViewContactsFragment();
+            SAVE_CONTACT_ENABLED = true;
+        }
+
+    }
+
+    private View.OnClickListener viewContactsTabObject = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            callViewContactsFragment();
+        }
+    };
+
+    @SuppressLint("NewApi")
+    private void callViewContactsFragment() {
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameForContacts, new ViewContactsFragment()).commit();
+        viewContactsTab.setBackground(getActivity().getResources().getDrawable(R.drawable.cp_view_menu_selected));
+        saveContactsTab.setBackground(getActivity().getResources().getDrawable(R.drawable.cp_save_menu_unselected));
+    }
+
+    private View.OnClickListener saveContactsTabObject = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            callSaveContactsFragment();
+        }
+    };
+
+    @SuppressLint("NewApi")
+    private void callSaveContactsFragment() {
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameForContacts, new SaveContactsFragment()).commit();
+        saveContactsTab.setBackground(getActivity().getResources().getDrawable(R.drawable.cp_save_menu_selected));
+        viewContactsTab.setBackground(getActivity().getResources().getDrawable(R.drawable.cp_view_menu_unselected));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -156,5 +215,6 @@ public class tab4 extends Fragment {
         introBtnStateCheck(INTRO_ENABLED);
         exampleBtnStateCheck(EXAMPLE_ENABLED);
         furtherReadingBtnStateCheck(FURTHER_READING_ENABLED);
+        initialiseFrame(SAVE_CONTACT_ENABLED);
     }
 }

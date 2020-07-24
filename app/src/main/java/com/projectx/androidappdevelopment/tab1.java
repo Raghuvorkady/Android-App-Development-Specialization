@@ -1,6 +1,9 @@
 package com.projectx.androidappdevelopment;
 
+import android.app.ActionBar;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -19,6 +22,8 @@ import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static com.projectx.androidappdevelopment.R.color.blue;
 
 public class tab1 extends Fragment {
 
@@ -52,6 +57,7 @@ public class tab1 extends Fragment {
         return view;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         Log.d("onViewCreated()", "started");
@@ -66,7 +72,8 @@ public class tab1 extends Fragment {
 
         String stringTab1 = "Activity in Android";
         getActivity().setTitle(stringTab1 + "");
-
+        getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.darkBlue));
+        getActivity().setTitleColor(getResources().getColor(R.color.blue));
         /*introText.setVisibility(View.GONE);
         exampleScroller.setVisibility(View.GONE);
         furtherReadingTextView.setVisibility(View.GONE);*/
@@ -147,6 +154,7 @@ public class tab1 extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+        //mActionBarProvider = (ActionBarProvider) context;
         Log.d("onAttach()", "started");
 
     }
@@ -213,6 +221,4 @@ public class tab1 extends Fragment {
        exampleBtnStateCheck(EXAMPLE_ENABLED);
        furtherReadingBtnStateCheck(FURTHER_READING_ENABLED);
     }
-
-
 }

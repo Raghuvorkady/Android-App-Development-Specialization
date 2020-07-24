@@ -7,12 +7,14 @@
     tools:context=".MainActivity">
     <!--Add a feature called scroll hide-->
 
+    <include
+        layout="@layout/toolbar_layout"
+        android:id="@+id/toolbarMain" />
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottom_navigation">
-
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,6 +25,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="2dp"
         android:background="?android:attr/windowBackground"
+        app:itemTextColor="@color/colorPrimary"
         app:menu="@menu/bottom_navigation_menu"
         android:layout_alignParentLeft="true" />
 </RelativeLayout>

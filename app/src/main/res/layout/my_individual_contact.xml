@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ViewContactsFragment">
+
+    <TableLayout
+        android:id="@+id/exampleTableContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2.5dp">
+
+            <TextView
+                android:background="@drawable/contact_textbox"
+                android:gravity="center|start"
+                android:hint="Your name:"
+                android:id="@+id/contactNameView"
+                android:inputType="textPersonName"
+                android:paddingLeft="10dp"
+                android:textColor="#555"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="2.5dp"
+            android:layout_marginBottom="2.5dp">
+
+            <TextView
+                android:background="@drawable/contact_textbox"
+                android:gravity="center|start"
+                android:hint="Your phone:"
+                android:inputType="phone"
+                android:id="@+id/contactPhoneView"
+                android:paddingLeft="10dp"
+                android:textColor="#555"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:background="@drawable/contact_textbox"
+                android:gravity="center|start"
+                android:hint="Your email:"
+                android:id="@+id/contactEmailView"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:textColor="#555"
+                android:textSize="14sp" />
+        </TableRow>
+
+
+    </TableLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#888"
+        android:layout_below="@+id/exampleTableContent"/>
+</RelativeLayout>

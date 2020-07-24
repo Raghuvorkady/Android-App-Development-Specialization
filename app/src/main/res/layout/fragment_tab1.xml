@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <Button
             android:id="@+id/introButton"
@@ -36,9 +37,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:alpha="0.8"
             android:background="@drawable/actvity_intro_box_bg"
-            android:padding="6dp"
+            android:padding="10dp"
             android:text="The Activity class is a crucial component of an Android app, and the way activities are launched and put together is a fundamental part of the platform's application model. Unlike programming paradigms in which apps are launched with a main() method, the Android system initiates code in an Activity instance by invoking specific callback methods that correspond to specific stages of its lifecycle."
             android:textColor="#FFF"
             android:visibility="visible" />
@@ -69,7 +69,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:alpha="0.8"
+            android:padding="10dp"
             android:background="@drawable/actvity_intro_box_bg"
             android:visibility="visible">
 
@@ -88,13 +88,12 @@
 
             <TableLayout
                 android:id="@+id/exampleTable"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/toastSwitch"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:padding="5dp">
+                android:background="@drawable/a_table_box"
+                android:padding="15dp"
+                android:layout_centerHorizontal="true">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -103,8 +102,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center"
                         android:text="Cases"
+                        android:background="@drawable/case_box"
+                        android:gravity="center"
                         android:textAlignment="center"
                         android:textColor="#FFF"
                         android:textSize="16sp"
@@ -113,12 +113,12 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="5dp"
-                        android:text="Android Activity Method calls"
-                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:background="@drawable/case_box"
+                        android:layout_marginLeft="10dp"
+                        android:text="Android Activity\nMethod calls"
                         android:textColor="#FFF"
-                        android:textSize="16sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
                 </TableRow>
 
@@ -130,17 +130,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:background="@drawable/a_method_box"
                         android:text="On opening\nthe application"
-                        android:textAlignment="center"
-                        android:textColor="#FFF" />
+                        android:gravity="center"
+                        android:textColor="@color/blue" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="onCreate(), onStart(), onResume()"
-                        android:textColor="#FFF" />
+                        android:lines="2"
+                        android:scrollHorizontally="true"
+                        android:text="onCreate(), onStart(),\nonResume()"
+                        android:background="@drawable/a_method_box"
+                        android:textColor="@color/blue" />
                 </TableRow>
 
                 <TableRow
@@ -151,17 +154,19 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:text="On minimizing\nthe application"
-                        android:textAlignment="center"
-                        android:textColor="#FFF" />
+                        android:gravity="center"
+                        android:background="@drawable/a_method_box"
+                        android:textColor="@color/blue" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:lines="2"
                         android:text="onPause(), onStop()"
-                        android:textColor="#FFF" />
+                        android:background="@drawable/a_method_box"
+                        android:textColor="@color/blue" />
                 </TableRow>
 
                 <TableRow
@@ -172,17 +177,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:text="On opening the app\nfrom Recents menu"
-                        android:textAlignment="center"
-                        android:textColor="#FFF" />
+                        android:gravity="center"
+                        android:background="@drawable/a_method_box"
+                        android:textColor="@color/blue" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="onRestart(), onStart(), onResume()"
-                        android:textColor="#FFF" />
+                        android:text="onRestart(), onStart(),\nonResume()"
+                        android:background="@drawable/a_method_box"
+                        android:textColor="@color/blue" />
                 </TableRow>
 
                 <TableRow
@@ -193,17 +199,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:text="On closing\nthe application"
-                        android:textAlignment="center"
-                        android:textColor="#FFF" />
+                        android:gravity="center"
+                        android:background="@drawable/a_method_box"
+                        android:textColor="@color/blue" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="onPause(), onStop(), onDestroy()"
-                        android:textColor="#FFF" />
+                        android:text="onPause(), onStop(),\nonDestroy()"
+                        android:background="@drawable/a_method_box"
+                        android:textColor="@color/blue" />
                 </TableRow>
 
             </TableLayout>
@@ -236,10 +243,9 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:alpha="0.8"
             android:autoLink="web"
             android:background="@drawable/actvity_intro_box_bg"
-            android:padding="8dp"
+            android:padding="10dp"
             android:textColorLink="@color/white"
             android:text="For Further reading of Android Activity and it’s lifecycle, visit:\nhttps://developer.android.com/guide/components/activities/intro-activities"
             android:textColor="#FFF"

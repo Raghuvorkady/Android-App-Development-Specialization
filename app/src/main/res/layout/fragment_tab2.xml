@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <Button
             android:id="@+id/introButton2"
@@ -20,11 +21,11 @@
             android:hapticFeedbackEnabled="true"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:text="Introduction"
             android:textAllCaps="false"
-            android:textColor="#FFF"/>
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/introText2"
@@ -35,9 +36,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="10dp"
-            android:alpha="0.8"
             android:background="@drawable/br_intro_box_bg"
-            android:padding="6dp"
+            android:padding="10dp"
             android:text="Android apps can send or receive broadcast messages from the Android system and other Android apps, similar to the publish-subscribe design pattern. These broadcasts are sent when an event of interest occurs. For example, the Android system sends broadcasts when various system events occur, such as when the system boots up or the device starts charging. Apps can also send custom broadcasts, for example, to notify other apps of something that they might be interested in (for example, some new data has been downloaded)."
             android:textColor="#FFF"
             android:textIsSelectable="true"
@@ -54,122 +54,112 @@
             android:background="@drawable/br_intro_btn_off"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:text="Example"
             android:textAllCaps="false"
-            android:textColor="#FFF" />
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:id="@+id/exampleLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/exampleButton2"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/br_intro_box_bg"
+            android:padding="10dp"
             android:visibility="visible">
-
-
-            <TextView
-                android:id="@+id/infoText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
-                android:background="#FFF"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Try to turn ON/OFF your\nmobile data/WiFi/Bluetooth,\nOn performing these actions, you\nwill be notified about these system\nevents, here:"
-                android:textColor="#EA4335"
-                android:visibility="visible" />
 
             <TableLayout
                 android:id="@+id/exampleTable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/infoText"
                 android:layout_centerHorizontal="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/br_example_bg"
-                android:layout_marginBottom="10dp"
-                android:padding="5dp">
+                android:background="@drawable/br_example_box"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/infoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Try to turn ON/OFF your\nmobile data/WiFi/Bluetooth,\nOn performing these actions, you\nwill be notified about these system\nevents, here:"
+                    android:textColor="#000"
+                    android:visibility="visible" />
+
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center">
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:text="Mobile data"
-                        android:textAlignment="center"
-                        android:textColor="#FFF"
-                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="10dp"
                         android:id="@+id/mobileDataIndicator"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
                         android:src="@drawable/red_signal" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:text="WiFI"
-                        android:textAlignment="center"
-                        android:textColor="#FFF"
-                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/wiFiIndicator"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginLeft="10dp"
-                        android:id="@+id/wiFiIndicator"
                         android:src="@drawable/red_signal" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:text="Bluetooth"
-                        android:textAlignment="center"
-                        android:textColor="#FFF"
-                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/bluetoothIndicator"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginLeft="10dp"
-                        android:id="@+id/bluetoothIndicator"
                         android:src="@drawable/red_signal" />
                 </TableRow>
 
@@ -188,11 +178,11 @@
             android:background="@drawable/br_intro_btn_off"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:text="Further Reading"
             android:textAllCaps="false"
-            android:textColor="#FFF" />
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/furtherReadingText2"
@@ -202,14 +192,13 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:alpha="0.8"
             android:autoLink="web"
-            android:textColorLink="@color/white"
             android:background="@drawable/br_intro_box_bg"
-            android:padding="8dp"
+            android:padding="10dp"
             android:text="For Further reading of Android BroadcastReceiver,
 visit:https://developer.android.com/guide/components/broadcasts"
             android:textColor="#FFF"
+            android:textSelectHandle="@color/blue"
             android:visibility="visible" />
     </RelativeLayout>
 </ScrollView>
