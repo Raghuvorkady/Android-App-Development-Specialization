@@ -5,95 +5,97 @@
     android:layout_height="match_parent"
     tools:context=".SaveContactsFragment">
 
-            <TableLayout
-                android:id="@+id/exampleTableContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/contact_box_bg">
+    <TableLayout
+        android:id="@+id/exampleTableContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/contact_box_bg">
 
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="5dp">
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
 
-                    <EditText
-                        android:background="@drawable/contact_textbox"
-                        android:gravity="center|start"
-                        android:id="@+id/contactName"
-                        android:hint="Enter your name:"
-                        android:inputType="textPersonName"
-                        android:paddingLeft="10dp"
-                        android:textColor="#555"
-                        android:textSize="14sp" />
-                </TableRow>
+            <EditText
+                android:id="@+id/contactName"
+                android:background="@drawable/contact_textbox"
+                android:gravity="center|start"
+                android:hint="Enter your name:"
+                android:inputType="textPersonName"
+                android:paddingLeft="10dp"
+                android:textColor="#555"
+                android:textSize="14sp" />
+        </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
 
-                    <EditText
-                        android:background="@drawable/contact_textbox"
-                        android:gravity="center|start"
-                        android:hint="Enter your phone:"
-                        android:inputType="phone"
-                        android:digits="0123456789"
-                        android:id="@+id/contactPhone"
-                        android:paddingLeft="10dp"
-                        android:textColor="#555"
-                        android:textSize="14sp" />
-                </TableRow>
+            <EditText
+                android:id="@+id/contactPhone"
+                android:background="@drawable/contact_textbox"
+                android:digits="0123456789"
+                android:gravity="center|start"
+                android:hint="Enter your phone:"
+                android:inputType="phone"
+                android:paddingLeft="10dp"
+                android:textColor="#555"
+                android:textSize="14sp" />
+        </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
 
-                    <EditText
-                        android:background="@drawable/contact_textbox"
-                        android:gravity="center|start"
-                        android:hint="Enter your email:"
-                        android:id="@+id/contactEmail"
-                        android:inputType="textNoSuggestions"
-                        android:paddingLeft="10dp"
-                        android:textColor="#555"
-                        android:textSize="14sp" />
-                </TableRow>
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:gravity="right"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginRight="20dp">
+            <EditText
+                android:id="@+id/contactEmail"
+                android:background="@drawable/contact_textbox"
+                android:gravity="center|start"
+                android:hint="Enter your email:"
+                android:inputType="textNoSuggestions|textVisiblePassword"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="#555"
+                android:textSize="14sp"
+                tools:ignore="TextFields" />
+        </TableRow>
 
-                    <Button
-                        android:id="@+id/contactSaveButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="37dp"
-                        android:layout_gravity="right"
-                        android:background="@drawable/button_ripple_efx"
-                        android:clickable="true"
-                        android:hapticFeedbackEnabled="true"
-                        android:text="Save"
-                        android:textColor="#FFF"
-                        android:textStyle="bold" />
-                    <!--android:foreground="?attr/selectableItemBackground"-->
-                </TableRow>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="right">
 
-            </TableLayout>
+            <Button
+                android:id="@+id/contactSaveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_gravity="right"
+                android:background="@drawable/button_ripple_efx"
+                android:clickable="true"
+                android:hapticFeedbackEnabled="true"
+                android:text="Save"
+                android:textColor="#FFF"
+                android:textStyle="bold" />
+            <!--android:foreground="?attr/selectableItemBackground"-->
+        </TableRow>
 
+    </TableLayout>
 
 
 </RelativeLayout>

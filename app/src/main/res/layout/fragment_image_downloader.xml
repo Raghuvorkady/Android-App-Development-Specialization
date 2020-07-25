@@ -40,9 +40,9 @@
             app:startIconDrawable="@drawable/ic_baseline_search_24">
 
             <EditText
+                android:id="@+id/searchBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/searchBox"
                 android:background="@drawable/box_bg"
                 android:hint="Enter URL of the image to download"
                 android:inputType="textUri"

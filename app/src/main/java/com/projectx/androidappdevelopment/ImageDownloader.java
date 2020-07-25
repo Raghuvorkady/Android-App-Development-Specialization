@@ -115,7 +115,7 @@ public class ImageDownloader extends Fragment {
     private void storeImage(Bitmap bitmap) {
         File checkFile = new File(String.valueOf(getActivity().getApplicationContext().getExternalFilesDir("/" + "AAD Basics" + "/" + "ImageDownloader")));
         String timeStamp = new SimpleDateFormat("YYYYMMDD_HHmm").format(new Date());
-        String imageName =  timeStamp + ".jpg";
+        String imageName = timeStamp + ".jpg";
         File file = new File(checkFile, imageName);
         if (!file.exists()) {
             Log.d("path", file.toString());
