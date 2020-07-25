@@ -49,18 +49,6 @@
             android:layout_marginTop="20dp"
             android:scaleType="fitCenter" />
 
-        <TextView
-            android:id="@+id/caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imageToDl"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:padding="5dp"
-            android:textColor="#444"
-            android:text="caption EMPTY"
-            android:textSize="18sp" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

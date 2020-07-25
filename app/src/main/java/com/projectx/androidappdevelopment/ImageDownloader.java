@@ -59,7 +59,7 @@ public class ImageDownloader extends Fragment {
         String stringTab1 = "ImageDownloader in Android";
         getActivity().setTitle(stringTab1 + "");
         getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.darkGreen));
-        getActivity().setTitleColor(getResources().getColor(R.color.green));
+        getActivity().setTitleColor(getResources().getColor(R.color.colorPrimaryDark));
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
