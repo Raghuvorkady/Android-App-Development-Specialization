@@ -44,6 +44,7 @@
                         android:gravity="center|start"
                         android:hint="Enter your phone:"
                         android:inputType="phone"
+                        android:digits="0123456789"
                         android:id="@+id/contactPhone"
                         android:paddingLeft="10dp"
                         android:textColor="#555"
@@ -63,7 +64,7 @@
                         android:gravity="center|start"
                         android:hint="Enter your email:"
                         android:id="@+id/contactEmail"
-                        android:inputType="textEmailAddress"
+                        android:inputType="textNoSuggestions"
                         android:paddingLeft="10dp"
                         android:textColor="#555"
                         android:textSize="14sp" />

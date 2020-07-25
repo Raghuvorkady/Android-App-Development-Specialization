@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ImageDownloader">
 
     <TextView
@@ -42,7 +43,7 @@
         <ImageView
             android:id="@+id/imageToDl"
             android:layout_width="350dp"
-            android:layout_height="330dp"
+            android:layout_height="300dp"
             android:layout_below="@id/searchBox"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
@@ -57,7 +58,7 @@
             android:layout_marginTop="10dp"
             android:padding="5dp"
             android:textColor="#444"
-            android:text="Fire camp in the nature"
+            android:text="caption EMPTY"
             android:textSize="18sp" />
 
         <Button

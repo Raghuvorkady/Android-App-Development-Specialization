@@ -1,7 +1,7 @@
 package com.projectx.androidappdevelopment;
 
 public class Contacts {
-    String name, phone, email;
+    private String name, phone, email;
 
     public Contacts(String name, String phone, String email) {
         this.name = name;

@@ -42,7 +42,7 @@ public class SaveContactsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        //((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         contactSaveButton = (Button) getView().findViewById(R.id.contactSaveButton);
 
@@ -53,6 +53,7 @@ public class SaveContactsFragment extends Fragment {
         @Override
         public void onClick(View v) {
             // Add a new student record
+            //TODO it does not check for empty strings
             ContentValues values = new ContentValues();
             values.put(ContactsProvider.NAME, ((EditText) getView().findViewById(R.id.contactName)).getText().toString());
             values.put(ContactsProvider.PHONE, ((EditText) getView().findViewById(R.id.contactPhone)).getText().toString());
@@ -62,6 +63,8 @@ public class SaveContactsFragment extends Fragment {
 
             //your contact saved successfully
             Toast.makeText(getActivity().getApplicationContext(), uri.toString(), Toast.LENGTH_LONG).show();
+
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameForContacts, new ViewContactsFragment()).commit();
         }
     };
 }

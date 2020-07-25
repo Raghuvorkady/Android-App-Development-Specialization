@@ -2,8 +2,11 @@ package com.projectx.androidappdevelopment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -18,61 +21,75 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
-    Toolbar toolbar;
-    boolean isInActionMode = false;
-    TextView toolbarTitle, toolbarSubtitle;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private DrawerLayout drawerLayout;
+    private BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //if (tab1.toastSwitch.isChecked())
-        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
-        toolbarTitle = (TextView)findViewById(R.id.textTitleToolBar);
-        toolbarSubtitle = (TextView) findViewById(R.id.textSubtitleToolBar);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.toolbar_layout);
-        toolbarTitle.setText("My Notes");
-        toolbarSubtitle.setVisibility(View.GONE);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        Toast.makeText(getApplicationContext(), "onCreate()", Toast.LENGTH_SHORT).show();
 
 
-        /*TextView textView = getSupportActionBar().getCustomView().findViewById(R.id.toolbar_title);
-        textView.setText("My Custom Title");*/
-        {
-            Toast.makeText(getApplicationContext(),"onCreate()",Toast.LENGTH_SHORT).show();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.entire_fragment_container,
+                    new FragmentContainer()).commit();
+            navigationView.setCheckedItem(R.id.homeButton);
         }
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new tab1()).commit();
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                    Fragment selectedFragment = null;
-                    switch (menuItem.getItemId()){
-                        case R.id.page_1:selectedFragment = new tab1();
-                            break;
-                        case R.id.page_2: selectedFragment = new tab2();
-                            break;
-                        case R.id.page_3:selectedFragment = new tab3();
-                            break;
-                        case R.id.page_4:selectedFragment = new tab4();
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
-                    return true;
-                }
-            };
 
-   /*@Override
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.homeButton:
+                getSupportFragmentManager().beginTransaction().replace(R.id.entire_fragment_container,
+                        new FragmentContainer()).commit();
+
+                break;
+            case R.id.imageDownloaderButton:
+                getSupportFragmentManager().beginTransaction().replace(R.id.entire_fragment_container,
+                        new ImageDownloader()).commit();
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+   @Override
     protected void onStart() {
         super.onStart();
        //if (tab1.toastSwitch.isChecked())
@@ -112,5 +129,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Toast.makeText(getApplicationContext(),"onDestroy()",Toast.LENGTH_SHORT).show();
-    }*/
+    }
 }

@@ -198,7 +198,7 @@
             android:text="For Further reading of Android BroadcastReceiver,
 visit:https://developer.android.com/guide/components/broadcasts"
             android:textColor="#FFF"
-            android:textSelectHandle="@color/blue"
+            android:textColorLink="@color/colorPrimary"
             android:visibility="visible" />
     </RelativeLayout>
 </ScrollView>
