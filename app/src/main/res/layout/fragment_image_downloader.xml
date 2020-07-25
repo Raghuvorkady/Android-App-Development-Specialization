@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayoutID"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/relativeLayoutID"
     android:background="#999"
     tools:context=".ImageDownloader">
 
@@ -28,31 +29,40 @@
         android:layout_margin="10dp"
         android:background="@drawable/relative_box_bg">
 
-        <EditText
-            android:id="@+id/searchBox"
-            android:lines="1"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordBox"
             android:layout_width="match_parent"
-            android:inputType="text"
             android:layout_height="50dp"
             android:layout_margin="15dp"
-            android:textColorHint="#c4c4c4"
-            android:textColor="@color/white"
-            android:background="@drawable/box_bg"
-            android:drawableEnd="@drawable/ic_baseline_search_24"
-            android:drawableRight="@drawable/ic_baseline_search_24"
-            android:hint="Enter URL of the image to download"
-            android:padding="10dp" />
+            android:background="@android:color/transparent"
+            app:endIconMode="clear_text"
+            app:hintEnabled="false"
+            app:startIconDrawable="@drawable/ic_baseline_search_24">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/searchBox"
+                android:background="@drawable/box_bg"
+                android:hint="Enter URL of the image to download"
+                android:inputType="textUri"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:textColorHint="#c4c4c4" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
             android:id="@+id/imageToDl"
             android:layout_width="350dp"
             android:layout_height="300dp"
-            android:layout_below="@id/searchBox"
+            android:layout_below="@id/passwordBox"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:scaleType="fitCenter" />
 
         <Button
+            android:id="@+id/downloadB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -62,7 +72,6 @@
             android:gravity="center"
             android:padding="15dp"
             android:text="Download"
-            android:id="@+id/downloadB"
             android:textAllCaps="false"
             android:textColor="#FFF"
             android:textSize="20sp" />
