@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:id="@+id/relativeLayoutID"
+    android:background="#999"
     tools:context=".ImageDownloader">
 
     <TextView
@@ -15,7 +16,7 @@
         android:background="@drawable/text_bg"
         android:padding="10dp"
         android:text="Web Service Example"
-        android:textColor="#FFF"
+        android:textColor="#444"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -33,7 +34,9 @@
             android:layout_width="match_parent"
             android:inputType="text"
             android:layout_height="50dp"
-            android:layout_margin="10dp"
+            android:layout_margin="15dp"
+            android:textColorHint="#c4c4c4"
+            android:textColor="@color/white"
             android:background="@drawable/box_bg"
             android:drawableEnd="@drawable/ic_baseline_search_24"
             android:drawableRight="@drawable/ic_baseline_search_24"

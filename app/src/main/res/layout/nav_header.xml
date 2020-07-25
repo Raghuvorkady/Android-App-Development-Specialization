@@ -19,12 +19,12 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:id="@+id/logo_image"
-            android:src="@drawable/add_basics_logo" />
+            android:src="@drawable/aad_basics_logo" />
 
         <TextView
             android:layout_below="@+id/logo_image"
             android:id="@+id/logo_text"
-            android:text="ADD Basics"
+            android:text="AAD Basics"
             android:padding="5dp"
             android:textStyle="bold"
             android:textSize="20sp"
