@@ -45,6 +45,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/box_bg"
                 android:hint="Enter URL of the image to download"
+                android:imeOptions="actionSearch"
                 android:inputType="textUri"
                 android:padding="5dp"
                 android:textColor="@color/white"

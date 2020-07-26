@@ -142,6 +142,7 @@ public class ImageDownloader extends Fragment {
             mProgressDialog.setTitle("Downloading the Image");
             mProgressDialog.setMessage("Loading...");
             mProgressDialog.setIndeterminate(false);
+            mProgressDialog.setCancelable(false);
             mProgressDialog.show();
         }
 

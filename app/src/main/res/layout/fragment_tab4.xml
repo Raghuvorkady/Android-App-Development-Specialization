@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#98D2A8"
+    android:id="@+id/scroll_view_layout"
     tools:context=".Tabs.tab4">
 
     <RelativeLayout
