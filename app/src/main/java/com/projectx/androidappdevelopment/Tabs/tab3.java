@@ -21,21 +21,8 @@ import com.projectx.androidappdevelopment.R;
 import com.projectx.androidappdevelopment.Services.MyAlarmService;
 import com.projectx.androidappdevelopment.Services.MyRingtoneService;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link tab3#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class tab3 extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private Button introButton, exampleButton, furtherReadingButton, ringtoneButton, alarmButton;
     private RelativeLayout exampleScroller;
     private TextView introText, furtherReadingTextView, ringtoneText, alarmText;
@@ -47,31 +34,9 @@ public class tab3 extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment tab3.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static tab3 newInstance(String param1, String param2) {
-        tab3 fragment = new tab3();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -95,7 +60,7 @@ public class tab3 extends Fragment {
         ringtoneText = (TextView) getView().findViewById(R.id.ringtoneText);
         alarmText = (TextView) getView().findViewById(R.id.alarmText);
 
-        String stringTab1 = "Services in Android";
+        String stringTab1 = getString(R.string.tab3Name);
         getActivity().setTitle(stringTab1 + "");
         getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.darkYellow));
         getActivity().setTitleColor(getResources().getColor(R.color.yellow));

@@ -1,30 +1,22 @@
 package com.projectx.androidappdevelopment.Fragments;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
-import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import android.os.Environment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethod;
-import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +28,6 @@ import com.projectx.androidappdevelopment.R;
 
 import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,9 +36,6 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static android.content.ContentValues.TAG;
-
-//TODO save the file downloaded into the device!!!
 public class ImageDownloader extends Fragment {
     String url = "https://wallpapersite.com/images/pages/pic_w/6408.jpg";
     ImageView image;
@@ -75,7 +63,7 @@ public class ImageDownloader extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         image = (ImageView) getView().findViewById(R.id.imageToDl);
         downloadButton = (Button) getView().findViewById(R.id.downloadB);
         editText = (EditText) getView().findViewById(R.id.searchBox);
@@ -125,7 +113,7 @@ public class ImageDownloader extends Fragment {
             try {
                 fos = new FileOutputStream(file);
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                Toast.makeText(getActivity().getApplicationContext(), imageName+" image saved at location: \n"+ checkFile, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(), imageName + " image saved at location: \n" + checkFile, Toast.LENGTH_LONG).show();
                 fos.flush();
                 fos.close();
             } catch (java.io.IOException e) {

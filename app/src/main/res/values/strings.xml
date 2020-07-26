@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">AAD Basics</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <!-- TODO: Remove or change this placeholder text extract strings, action bar edit, navigation drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tab1Name">Activity in Android</string>
+    <string name="tab2Name">BroadcastReceiver in Android</string>
+    <string name="tab3Name">Services in Android</string>
+    <string name="tab4Name">ContentProvider in Android</string>
 </resources>

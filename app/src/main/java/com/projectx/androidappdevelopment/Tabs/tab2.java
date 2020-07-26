@@ -73,7 +73,7 @@ public class tab2 extends Fragment {
 
         toolbar = getActivity().getActionBar();
 
-        String stringTab1 = "BroadcastReceiver in Android";
+        String stringTab1 = getString(R.string.tab2Name);
         getActivity().setTitle(stringTab1 + "");
         getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.darkRed));
         getActivity().setTitleColor(getResources().getColor(R.color.red));

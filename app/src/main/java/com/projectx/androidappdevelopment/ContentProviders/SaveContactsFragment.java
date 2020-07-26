@@ -83,25 +83,31 @@ public class SaveContactsFragment extends Fragment {
         @Override
         public void onClick(View v) {
             // Add a new student record
-            //TODO it does not check for empty strings
+            String name = contactName.getText().toString();
+            String phone = contactPhone.getText().toString();
+            String email = contactEmail.getText().toString();
+            if (name.length() == 0 && phone.length() == 0 && email.length() == 0) {
+                Toast.makeText(getActivity().getApplicationContext(), "Input fields cannot be empty", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                //getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                ContentValues values = new ContentValues();
+                values.put(ContactsProvider.NAME, name);
+                values.put(ContactsProvider.PHONE, phone);
+                values.put(ContactsProvider.EMAIL, email);
 
-            //getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-            ContentValues values = new ContentValues();
-            values.put(ContactsProvider.NAME, contactName.getText().toString());
-            values.put(ContactsProvider.PHONE, contactPhone.getText().toString());
-            values.put(ContactsProvider.EMAIL, contactEmail.getText().toString());
+                Uri uri = getActivity().getApplicationContext().getContentResolver().insert(ContactsProvider.CONTENT_URI, values);
 
-            Uri uri = getActivity().getApplicationContext().getContentResolver().insert(ContactsProvider.CONTENT_URI, values);
+                //your contact saved successfully
+                Toast.makeText(getActivity().getApplicationContext(), uri.toString(), Toast.LENGTH_LONG).show();
 
-            //your contact saved successfully
-            Toast.makeText(getActivity().getApplicationContext(), uri.toString(), Toast.LENGTH_LONG).show();
-
-            try {
-                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(saveLayout.getWindowToken(), 0);
-            } catch (Exception e) {
+                try {
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(saveLayout.getWindowToken(), 0);
+                } catch (Exception e) {
+                }
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameForContacts, new ViewContactsFragment()).commit();
             }
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameForContacts, new ViewContactsFragment()).commit();
         }
     };
 }

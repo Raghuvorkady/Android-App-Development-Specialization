@@ -1,9 +1,6 @@
 package com.projectx.androidappdevelopment.Tabs;
 
-import android.app.ActionBar;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -18,14 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.projectx.androidappdevelopment.R;
-
-import static com.projectx.androidappdevelopment.R.color.blue;
 
 public class tab1 extends Fragment {
 
@@ -36,7 +29,6 @@ public class tab1 extends Fragment {
     public static boolean INTRO_ENABLED = true;
     public static boolean EXAMPLE_ENABLED = false;
     public static boolean FURTHER_READING_ENABLED = false;
-
 
     public tab1() {
         // Required empty public constructor
@@ -72,13 +64,10 @@ public class tab1 extends Fragment {
         furtherReadingButton = (Button) getView().findViewById(R.id.furtherReadingB);
         furtherReadingTextView = (TextView) getView().findViewById(R.id.furtherReadingText);
 
-        String stringTab1 = "Activity in Android";
+        String stringTab1 = getString(R.string.tab1Name);
         getActivity().setTitle(stringTab1 + "");
         getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.darkBlue));
         getActivity().setTitleColor(getResources().getColor(R.color.blue));
-        /*introText.setVisibility(View.GONE);
-        exampleScroller.setVisibility(View.GONE);
-        furtherReadingTextView.setVisibility(View.GONE);*/
 
         introButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -219,8 +208,8 @@ public class tab1 extends Fragment {
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         Log.d("onViewStateRestore()", "started");
-       introBtnStateCheck(INTRO_ENABLED);
-       exampleBtnStateCheck(EXAMPLE_ENABLED);
-       furtherReadingBtnStateCheck(FURTHER_READING_ENABLED);
+        introBtnStateCheck(INTRO_ENABLED);
+        exampleBtnStateCheck(EXAMPLE_ENABLED);
+        furtherReadingBtnStateCheck(FURTHER_READING_ENABLED);
     }
 }
