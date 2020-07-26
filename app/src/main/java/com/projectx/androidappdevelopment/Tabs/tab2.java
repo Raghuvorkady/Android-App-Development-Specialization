@@ -1,8 +1,6 @@
 package com.projectx.androidappdevelopment.Tabs;
 
 import android.app.ActionBar;
-import android.app.usage.NetworkStats;
-import android.app.usage.NetworkStatsManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -14,11 +12,9 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +22,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.projectx.androidappdevelopment.R;
 
@@ -37,10 +31,11 @@ public class tab2 extends Fragment {
     private RelativeLayout exampleScroller;
     private ImageView bluetoothIndicator, wiFiIndicator, mobileDataIndicator;
     private TextView introText, furtherReadingTextView;
-    public static boolean INTRO_ENABLED = true;
-    public static boolean EXAMPLE_ENABLED = false;
-    public static boolean FURTHER_READING_ENABLED = false;
+    private static boolean INTRO_ENABLED = true;
+    private static boolean EXAMPLE_ENABLED = false;
+    private static boolean FURTHER_READING_ENABLED = false;
     ActionBar toolbar;
+
     public tab2() {
         // Required empty public constructor
     }
@@ -78,14 +73,17 @@ public class tab2 extends Fragment {
         getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.darkRed));
         getActivity().setTitleColor(getResources().getColor(R.color.red));
 
-        IntentFilter bfilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-        getActivity().getApplicationContext().registerReceiver(broadcastReceiverForBluetooth, bfilter);
+        //create a intentFilter for bluetooth state change
+        IntentFilter bluetoothFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+        getActivity().getApplicationContext().registerReceiver(broadcastReceiverForBluetooth, bluetoothFilter);
 
-        IntentFilter wFilter = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
-        getActivity().getApplicationContext().registerReceiver(broadcastReceiverForWiFi, wFilter);
+        //create a intentFilter for wiFi state change
+        IntentFilter wifiFilter = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
+        getActivity().getApplicationContext().registerReceiver(broadcastReceiverForWiFi, wifiFilter);
 
-        IntentFilter mFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        getActivity().getApplicationContext().registerReceiver(broadcastReceiverForMobileData, mFilter);
+        //create a intentFilter for mobileData state change
+        IntentFilter mobileDataFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        getActivity().getApplicationContext().registerReceiver(broadcastReceiverForMobileData, mobileDataFilter);
 
         introButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -112,6 +110,7 @@ public class tab2 extends Fragment {
         });
     }
 
+    //used to check the state(pressed or released) of further reading button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void furtherReadingBtnStateCheck(boolean b) {
         if (b) {
@@ -125,6 +124,7 @@ public class tab2 extends Fragment {
         }
     }
 
+    //used to check the state(pressed or released) of example button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void exampleBtnStateCheck(boolean b) {
         if (b) {
@@ -138,6 +138,7 @@ public class tab2 extends Fragment {
         }
     }
 
+    //used to check the state(pressed or released) of introduction button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void introBtnStateCheck(Boolean b) {
         if (b) {
@@ -151,30 +152,7 @@ public class tab2 extends Fragment {
         }
     }
 
-    private void stateChecker() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getApplicationContext().getSystemService(getActivity().getApplicationContext().CONNECTIVITY_SERVICE);
-        NetworkInfo mobileInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        boolean mobileConnected = mobileInfo.getState() == NetworkInfo.State.CONNECTED;
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        WifiManager wifi = (WifiManager) getActivity().getApplicationContext().getSystemService(getActivity().getApplicationContext().WIFI_SERVICE);
-        if (wifi.isWifiEnabled()) {
-            wiFiIndicator.setImageDrawable(getResources().getDrawable(R.drawable.green_signal));
-        } else {
-            wiFiIndicator.setImageDrawable(getResources().getDrawable(R.drawable.red_signal));
-        }
-        if (mobileConnected) {
-            mobileDataIndicator.setImageDrawable(getResources().getDrawable(R.drawable.green_signal));
-        } else {
-            mobileDataIndicator.setImageDrawable(getResources().getDrawable(R.drawable.red_signal));
-        }
-        if (mBluetoothAdapter == null) {// Device does not support Bluetooth
-        } else if (!mBluetoothAdapter.isEnabled()) {
-            bluetoothIndicator.setImageDrawable(getResources().getDrawable(R.drawable.red_signal));
-        } else {
-            bluetoothIndicator.setImageDrawable(getResources().getDrawable(R.drawable.green_signal));
-        }
-    }
-
+    //broadcast receiver to receive the bluetooth state change
     private final BroadcastReceiver broadcastReceiverForBluetooth = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -187,10 +165,13 @@ public class tab2 extends Fragment {
             }
         }
     };
+
+    //broadcast receiver to receive the wiFi state change
     private final BroadcastReceiver broadcastReceiverForWiFi = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             WifiManager wifi = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            assert wifi != null;
             if (wifi.isWifiEnabled()) {
                 wiFiIndicator.setImageDrawable(getResources().getDrawable(R.drawable.green_signal));
             } else {
@@ -198,11 +179,15 @@ public class tab2 extends Fragment {
             }
         }
     };
+
+    //broadcast receiver to receive the mobileData state change
     private final BroadcastReceiver broadcastReceiverForMobileData = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getApplicationContext().getSystemService(getActivity().getApplicationContext().CONNECTIVITY_SERVICE);
+            assert connectivityManager != null;
             NetworkInfo mobileInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+            assert mobileInfo != null;
             boolean mobileConnected = mobileInfo.getState() == NetworkInfo.State.CONNECTED;
             if (mobileConnected) {
                 mobileDataIndicator.setImageDrawable(getResources().getDrawable(R.drawable.green_signal));
@@ -217,15 +202,17 @@ public class tab2 extends Fragment {
         super.onResume();
     }
 
+    //used to retrieve the last instance state
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+    public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         introBtnStateCheck(INTRO_ENABLED);
         exampleBtnStateCheck(EXAMPLE_ENABLED);
         furtherReadingBtnStateCheck(FURTHER_READING_ENABLED);
     }
 
+    //method used to unregister the broadcast receiver
     @Override
     public void onDestroy() {
         super.onDestroy();

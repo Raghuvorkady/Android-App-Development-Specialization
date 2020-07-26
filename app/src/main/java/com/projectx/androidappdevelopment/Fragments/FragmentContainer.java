@@ -2,8 +2,6 @@ package com.projectx.androidappdevelopment.Fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -37,19 +35,22 @@ public class FragmentContainer extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView) getView().findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
+        //used to create a default tab
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new tab1()).commit();
     }
 
+    //used to switch between tabs
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                public boolean onNavigationItemSelected(MenuItem menuItem) {
                     Fragment selectedFragment = null;
                     switch (menuItem.getItemId()) {
                         case R.id.page_1:
@@ -65,7 +66,8 @@ public class FragmentContainer extends Fragment {
                             selectedFragment = new tab4();
                             break;
                     }
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
                     return true;
                 }
             };

@@ -58,9 +58,9 @@ public class ContactsProvider extends ContentProvider {
                     " " + " phone TEXT NOT NULL," +
                     " " + " email TEXT NOT NULL);";
 
-    /**
-     * Helper class that actually creates and manages
-     * the provider's underlying data repository.
+    /*
+     Helper class that actually creates and manages
+     the provider's underlying data repository.
      */
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
@@ -99,9 +99,9 @@ public class ContactsProvider extends ContentProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         /**
-         * Add a new student record
+         * Add a new contact record
          */
-        long rowID = db.insert(CONTACTS_TABLE_NAME,null, values);
+        long rowID = db.insert(CONTACTS_TABLE_NAME, null, values);
 
         /**
          * If record is added successfully
@@ -134,7 +134,7 @@ public class ContactsProvider extends ContentProvider {
 
         if (sortOrder == null || sortOrder.equals("")) {
             /**
-             * By default sort on student names
+             * By default sort on contact names
              */
             sortOrder = NAME;
         }
@@ -194,12 +194,12 @@ public class ContactsProvider extends ContentProvider {
     public String getType(Uri uri) {
         switch (uriMatcher.match(uri)) {
             /**
-             * Get all student records
+             * Get all contact records
              */
             case CONTACTS:
                 return "vnd.android.cursor.dir/vnd.com.projectx.androidappdevelopment.contacts";
             /**
-             * Get a particular student
+             * Get a particular contact
              */
             case CONTACT_ID:
                 return "vnd.android.cursor.item/com.projectx.androidappdevelopment.contacts";

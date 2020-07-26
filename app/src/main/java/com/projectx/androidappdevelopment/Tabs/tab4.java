@@ -23,10 +23,10 @@ public class tab4 extends Fragment {
     private Button introButton, exampleButton, furtherReadingButton, saveContactsTab, viewContactsTab;
     private RelativeLayout exampleScroller;
     private TextView introText, furtherReadingTextView;
-    public static boolean INTRO_ENABLED = true;
-    public static boolean EXAMPLE_ENABLED = false;
-    public static boolean FURTHER_READING_ENABLED = false;
-    public static boolean SAVE_CONTACT_ENABLED = false;
+    private static boolean INTRO_ENABLED = true;
+    private static boolean EXAMPLE_ENABLED = false;
+    private static boolean FURTHER_READING_ENABLED = false;
+    private static boolean SAVE_CONTACT_ENABLED = false;
 
     public tab4() {
         // Required empty public constructor
@@ -43,9 +43,11 @@ public class tab4 extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tab4, container, false);
     }
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
         introButton = (Button) getView().findViewById(R.id.introButton4);
         introText = (TextView) getView().findViewById(R.id.introText4);
         exampleButton = (Button) getView().findViewById(R.id.exampleButton4);
@@ -93,18 +95,15 @@ public class tab4 extends Fragment {
         });
     }
 
+    //used to initialise either of save contact or view contact
     private void initialiseFrame(Boolean b) {
-        //TODO check for clicked button
-
-        //if (saveContactsTab.getBackground() != null && saveContactsTab.getBackground().getConstantState().equals(getResources().getDrawable(R.drawable.cp_save_menu_selected).getConstantState())) {
-        if (b){
+        if (b) {
             callSaveContactsFragment();
             SAVE_CONTACT_ENABLED = false;
         } else {
             callViewContactsFragment();
             SAVE_CONTACT_ENABLED = true;
         }
-
     }
 
     private View.OnClickListener viewContactsTabObject = new View.OnClickListener() {
@@ -114,6 +113,7 @@ public class tab4 extends Fragment {
         }
     };
 
+    //used to set view contact background
     @SuppressLint("NewApi")
     private void callViewContactsFragment() {
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameForContacts, new ViewContactsFragment()).commit();
@@ -128,6 +128,7 @@ public class tab4 extends Fragment {
         }
     };
 
+    //used to set save contact background
     @SuppressLint("NewApi")
     private void callSaveContactsFragment() {
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameForContacts, new SaveContactsFragment()).commit();
@@ -135,6 +136,7 @@ public class tab4 extends Fragment {
         viewContactsTab.setBackground(getActivity().getResources().getDrawable(R.drawable.cp_view_menu_unselected));
     }
 
+    //used to check the state(pressed or released) of further reading button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void furtherReadingBtnStateCheck(boolean b) {
         if (b) {
@@ -148,6 +150,7 @@ public class tab4 extends Fragment {
         }
     }
 
+    //used to check the state(pressed or released) of example button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void exampleBtnStateCheck(boolean b) {
         if (b) {
@@ -161,6 +164,7 @@ public class tab4 extends Fragment {
         }
     }
 
+    //used to check the state(pressed or released) of introduction button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void introBtnStateCheck(boolean b) {
         if (b) {
@@ -174,6 +178,7 @@ public class tab4 extends Fragment {
         }
     }
 
+    //used to retrieve the last instance state
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {

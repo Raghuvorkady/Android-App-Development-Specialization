@@ -2,6 +2,7 @@ package com.projectx.androidappdevelopment.Fragments;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -37,12 +38,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ImageDownloader extends Fragment {
-    String url = "https://wallpapersite.com/images/pages/pic_w/6408.jpg";
-    ImageView image;
-    Button downloadButton;
-    EditText editText;
-    RelativeLayout relativeLayout;
-    ProgressDialog mProgressDialog;
+
+    private String url = "";
+    private ImageView image;
+    private Button downloadButton;
+    private EditText editText;
+    private RelativeLayout relativeLayout;
+    private ProgressDialog mProgressDialog;
 
     public ImageDownloader() {
         // Required empty public constructor
@@ -64,6 +66,7 @@ public class ImageDownloader extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
         image = (ImageView) getView().findViewById(R.id.imageToDl);
         downloadButton = (Button) getView().findViewById(R.id.downloadB);
         editText = (EditText) getView().findViewById(R.id.searchBox);
@@ -83,8 +86,10 @@ public class ImageDownloader extends Fragment {
                     // Perform action on key press
                     try {
                         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                        assert imm != null;
                         imm.hideSoftInputFromWindow(relativeLayout.getWindowToken(), 0);
                     } catch (Exception e) {
+                        e.printStackTrace();
                     }
                     url = editText.getText().toString();
                     new DownloadImage().execute(url);
@@ -94,6 +99,8 @@ public class ImageDownloader extends Fragment {
             }
         });
 
+        relativeLayout.setOnClickListener(hideKeyboard);
+
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,9 +109,27 @@ public class ImageDownloader extends Fragment {
         });
     }
 
+    private View.OnClickListener hideKeyboard = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //used to remove the focus from the EditText View
+            editText.clearFocus();
+            //used to hide the keyboard
+            try {
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                assert imm != null;
+                imm.hideSoftInputFromWindow(relativeLayout.getWindowToken(), 0);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    //below method is used to save the image in the internal storage
     private void storeImage(Bitmap bitmap) {
         File checkFile = new File(String.valueOf(getActivity().getApplicationContext().getExternalFilesDir("/" + "AAD Basics" + "/" + "ImageDownloader")));
-        String timeStamp = new SimpleDateFormat("YYYYMMDD_HHmm").format(new Date());
+        @SuppressLint("SimpleDateFormat")
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date());
         String imageName = timeStamp + ".jpg";
         File file = new File(checkFile, imageName);
         if (!file.exists()) {
@@ -122,6 +147,7 @@ public class ImageDownloader extends Fragment {
         }
     }
 
+    //used to retrieve the image in background
     private class DownloadImage extends AsyncTask<String, Void, Bitmap> {
         @Override
         protected void onPreExecute() {

@@ -1,5 +1,6 @@
 package com.projectx.androidappdevelopment.Classes;
 
+//a class which is used to collectively store all details of a contact
 public class Contacts {
     private String name, phone, email;
 
@@ -8,6 +9,7 @@ public class Contacts {
         this.phone = phone;
         this.email = email;
     }
+
     public String getName() {
         return name;
     }

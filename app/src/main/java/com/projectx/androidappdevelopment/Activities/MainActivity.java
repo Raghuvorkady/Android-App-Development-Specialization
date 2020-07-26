@@ -1,6 +1,5 @@
 package com.projectx.androidappdevelopment.Activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -20,30 +19,32 @@ import com.projectx.androidappdevelopment.R;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
-    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //used to set the custom toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
+        //used to implement the navigation view
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //used to add the hamburger menu
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        //onCreate() toast
         Toast.makeText(getApplicationContext(), "onCreate()", Toast.LENGTH_SHORT).show();
 
-
+        //to view home page fragment after onCreate() method
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.entire_fragment_container,
                     new FragmentContainer()).commit();
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
+        //below code is used to close the NavigationDrawer
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
@@ -60,14 +62,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        //used to switch between Home and imageDownloader fragments
         switch (menuItem.getItemId()) {
             case R.id.homeButton:
                 getSupportFragmentManager().beginTransaction().replace(R.id.entire_fragment_container,
                         new FragmentContainer()).commit();
-
                 break;
             case R.id.imageDownloaderButton:
                 getSupportFragmentManager().beginTransaction().replace(R.id.entire_fragment_container,
@@ -79,49 +80,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
-
-   @Override
     protected void onStart() {
         super.onStart();
-       //if (tab1.toastSwitch.isChecked())
-       {
-           Toast.makeText(getApplicationContext(),"onStart()",Toast.LENGTH_SHORT).show();
-       }
+        //onStart() toast
+        Toast.makeText(getApplicationContext(), "onStart()", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        //if (tab1.toastSwitch.isChecked())
-        {
-            Toast.makeText(getApplicationContext(),"onResume()",Toast.LENGTH_SHORT).show();
-        }
+        //onResume() toast
+        Toast.makeText(getApplicationContext(), "onResume()", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Toast.makeText(getApplicationContext(),"onRestart()",Toast.LENGTH_SHORT).show();
+        //onRestart() toast
+        Toast.makeText(getApplicationContext(), "onRestart()", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Toast.makeText(getApplicationContext(),"onPause()",Toast.LENGTH_SHORT).show();
+        //onPause() toast
+        Toast.makeText(getApplicationContext(), "onPause()", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Toast.makeText(getApplicationContext(),"onStop()",Toast.LENGTH_SHORT).show();
+        //onStop() toast
+        Toast.makeText(getApplicationContext(), "onStop()", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Toast.makeText(getApplicationContext(),"onDestroy()",Toast.LENGTH_SHORT).show();
+        //onDestroy() toast
+        Toast.makeText(getApplicationContext(), "onDestroy()", Toast.LENGTH_SHORT).show();
     }
 }

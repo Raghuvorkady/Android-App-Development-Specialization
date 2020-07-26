@@ -8,6 +8,7 @@ import android.os.IBinder;
 import android.provider.Settings;
 
 public class MyAlarmService extends Service {
+
     private MediaPlayer mediaPlayer;
 
     public MyAlarmService() {
@@ -15,10 +16,10 @@ public class MyAlarmService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
+    //used to start the service(here: to start the playing of alarm)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         mediaPlayer = MediaPlayer.create(getApplicationContext(), Settings.System.DEFAULT_ALARM_ALERT_URI);

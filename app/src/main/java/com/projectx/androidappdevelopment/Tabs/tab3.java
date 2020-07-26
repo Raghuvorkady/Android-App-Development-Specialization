@@ -26,9 +26,9 @@ public class tab3 extends Fragment {
     private Button introButton, exampleButton, furtherReadingButton, ringtoneButton, alarmButton;
     private RelativeLayout exampleScroller;
     private TextView introText, furtherReadingTextView, ringtoneText, alarmText;
-    public static boolean INTRO_ENABLED = true;
-    public static boolean EXAMPLE_ENABLED = false;
-    public static boolean FURTHER_READING_ENABLED = false;
+    private static boolean INTRO_ENABLED = true;
+    private static boolean EXAMPLE_ENABLED = false;
+    private static boolean FURTHER_READING_ENABLED = false;
 
     public tab3() {
         // Required empty public constructor
@@ -67,6 +67,7 @@ public class tab3 extends Fragment {
 
         ringtoneButton.setOnClickListener(startBtn);
         alarmButton.setOnClickListener(stopBtn);
+
         introButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
@@ -92,6 +93,7 @@ public class tab3 extends Fragment {
         });
     }
 
+    //method to play ringtone(start/stop service)
     private View.OnClickListener startBtn = new View.OnClickListener() {
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
@@ -105,6 +107,7 @@ public class tab3 extends Fragment {
         }
     };
 
+    //method to change the ui of ringtone textView
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void setRingtoneButton() {
         if (isMyServiceRunning(MyRingtoneService.class)) {
@@ -117,6 +120,7 @@ public class tab3 extends Fragment {
         }
     }
 
+    //method to play alarm(start/stop service)
     private View.OnClickListener stopBtn = new View.OnClickListener() {
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
@@ -132,6 +136,7 @@ public class tab3 extends Fragment {
         }
     };
 
+    //method to change the ui of alarm textView
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void setAlarmButton() {
         if (isMyServiceRunning(MyAlarmService.class)) {
@@ -143,6 +148,7 @@ public class tab3 extends Fragment {
         }
     }
 
+    //method to check running state of services
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
@@ -153,6 +159,7 @@ public class tab3 extends Fragment {
         return false;
     }
 
+    //used to check the state(pressed or released) of further reading button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void furtherReadingBtnStateCheck(boolean b) {
         if (b) {
@@ -166,6 +173,7 @@ public class tab3 extends Fragment {
         }
     }
 
+    //used to check the state(pressed or released) of example button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void exampleBtnStateCheck(boolean b) {
         if (b) {
@@ -179,6 +187,7 @@ public class tab3 extends Fragment {
         }
     }
 
+    //used to check the state(pressed or released) of introduction button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void introBtnStateCheck(boolean b) {
         if (b) {
@@ -192,6 +201,7 @@ public class tab3 extends Fragment {
         }
     }
 
+    //used to retrieve the last instance state
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {

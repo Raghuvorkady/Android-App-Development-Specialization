@@ -4,8 +4,6 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
@@ -15,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.projectx.androidappdevelopment.R;
@@ -25,10 +22,9 @@ public class tab1 extends Fragment {
     private Button introButton, exampleButton, furtherReadingButton;
     private RelativeLayout exampleScroller;
     private TextView introText, furtherReadingTextView;
-    public static Switch toastSwitch;
-    public static boolean INTRO_ENABLED = true;
-    public static boolean EXAMPLE_ENABLED = false;
-    public static boolean FURTHER_READING_ENABLED = false;
+    private static boolean INTRO_ENABLED = true;
+    private static boolean EXAMPLE_ENABLED = false;
+    private static boolean FURTHER_READING_ENABLED = false;
 
     public tab1() {
         // Required empty public constructor
@@ -45,7 +41,6 @@ public class tab1 extends Fragment {
                              Bundle savedInstanceState) {
         // Always call the superclass first
         Log.d("onCreateView()", "started");
-        // Check whether we're recreating a previously destroyed instance
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_tab1, container, false);
         return view;
@@ -56,7 +51,7 @@ public class tab1 extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         Log.d("onViewCreated()", "started");
 
-        toastSwitch = (Switch) getView().findViewById(R.id.toastSwitch);
+        //toastSwitch = (Switch) getView().findViewById(R.id.toastSwitch);
         introButton = (Button) getView().findViewById(R.id.introButton);
         introText = (TextView) getView().findViewById(R.id.introText);
         exampleButton = (Button) getView().findViewById(R.id.exampleButton);
@@ -94,6 +89,7 @@ public class tab1 extends Fragment {
         });
     }
 
+    //used to check the state(pressed or released) of further reading button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void furtherReadingBtnStateCheck(Boolean b) {
         if (b) {
@@ -107,6 +103,7 @@ public class tab1 extends Fragment {
         }
     }
 
+    //used to check the state(pressed or released) of example button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void exampleBtnStateCheck(Boolean b) {
         if (b) {
@@ -120,6 +117,7 @@ public class tab1 extends Fragment {
         }
     }
 
+    //used to check the state(pressed or released) of introduction button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void introBtnStateCheck(Boolean b) {
         if (b) {
@@ -133,6 +131,7 @@ public class tab1 extends Fragment {
         }
     }
 
+    //used to save the instance state of buttons
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
@@ -143,7 +142,7 @@ public class tab1 extends Fragment {
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
+    public void onAttach(Context context) {
         super.onAttach(context);
         //mActionBarProvider = (ActionBarProvider) context;
         Log.d("onAttach()", "started");
@@ -192,6 +191,7 @@ public class tab1 extends Fragment {
         Log.d("onDetach()", "started");
     }
 
+    //used to retrieve the last instance state
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -203,9 +203,10 @@ public class tab1 extends Fragment {
         }
     }
 
+    //used to retrieve the last instance state
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+    public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         Log.d("onViewStateRestore()", "started");
         introBtnStateCheck(INTRO_ENABLED);

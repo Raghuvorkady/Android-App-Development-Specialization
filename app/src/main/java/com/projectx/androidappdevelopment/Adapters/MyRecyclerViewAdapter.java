@@ -15,14 +15,16 @@ import java.util.ArrayList;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyOwnHolder> {
 
-    Context context;
-    ArrayList<Contacts> contactsArrayList;
+    private Context context;
+    private ArrayList<Contacts> contactsArrayList;
 
+    //constructor used to set the variables context and contactsArrayList
     public MyRecyclerViewAdapter(Context context, ArrayList<Contacts> contactsArrayList) {
         this.context = context;
         this.contactsArrayList = contactsArrayList;
     }
 
+    //used to inflate the RecyclerView
     @Override
     public MyOwnHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
@@ -30,6 +32,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return new MyOwnHolder(myOwnView);
     }
 
+    //used to set the content into the individual holder one by one
     @Override
     public void onBindViewHolder(MyOwnHolder holder, int position) {
         holder.contactNameView.setText(contactsArrayList.get(position).getName());
@@ -37,11 +40,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         holder.contactEmailView.setText(contactsArrayList.get(position).getEmail());
     }
 
+    //used to retrieve the total number of contacts present
     @Override
     public int getItemCount() {
         return contactsArrayList.size();
     }
 
+    //used to refer the class object with the view
     public class MyOwnHolder extends RecyclerView.ViewHolder {
         TextView contactPhoneView, contactEmailView, contactNameView;
 

@@ -1,12 +1,9 @@
 package com.projectx.androidappdevelopment.ContentProviders;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,7 +13,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.projectx.androidappdevelopment.R;
@@ -25,20 +21,16 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class SaveContactsFragment extends Fragment {
 
-    private Button contactSaveButton;
-    RelativeLayout saveLayout;
-    //ScrollView scrollViewLayout;
+    private RelativeLayout saveLayout;
     private EditText contactName, contactPhone, contactEmail;
 
     public SaveContactsFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -49,12 +41,10 @@ public class SaveContactsFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
-        //scrollViewLayout = (ScrollView) getView().findViewById(R.id.scroll_view_layout);
-        contactSaveButton = (Button) getView().findViewById(R.id.contactSaveButton);
+        Button contactSaveButton = (Button) getView().findViewById(R.id.contactSaveButton);
         saveLayout = (RelativeLayout) getView().findViewById(R.id.saveLayout);
         contactName = ((EditText) getView().findViewById(R.id.contactName));
         contactPhone = ((EditText) getView().findViewById(R.id.contactPhone));
@@ -67,14 +57,17 @@ public class SaveContactsFragment extends Fragment {
     private View.OnClickListener hideKeyboard = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //used to remove the focus from the EditText View
             contactName.clearFocus();
             contactPhone.clearFocus();
             contactEmail.clearFocus();
+            //used to hide the keyboard
             try {
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
                 assert imm != null;
                 imm.hideSoftInputFromWindow(saveLayout.getWindowToken(), 0);
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     };
@@ -82,30 +75,37 @@ public class SaveContactsFragment extends Fragment {
     private View.OnClickListener saveContact = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            // Add a new student record
             String name = contactName.getText().toString();
             String phone = contactPhone.getText().toString();
             String email = contactEmail.getText().toString();
-            if (name.length() == 0 && phone.length() == 0 && email.length() == 0) {
-                Toast.makeText(getActivity().getApplicationContext(), "Input fields cannot be empty", Toast.LENGTH_SHORT).show();
-                return;
+            // used to check for empty input fields
+            if (name.length() == 0 || phone.length() == 0 || email.length() == 0) {
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "Input fields cannot be empty", Toast.LENGTH_SHORT).show();
             } else {
                 //getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                //the below code is used to put name, phone, email into ContentValues object
                 ContentValues values = new ContentValues();
                 values.put(ContactsProvider.NAME, name);
                 values.put(ContactsProvider.PHONE, phone);
                 values.put(ContactsProvider.EMAIL, email);
 
+                //used to insert values into the SQLite DB
                 Uri uri = getActivity().getApplicationContext().getContentResolver().insert(ContactsProvider.CONTENT_URI, values);
 
                 //your contact saved successfully
+                assert uri != null;
                 Toast.makeText(getActivity().getApplicationContext(), uri.toString(), Toast.LENGTH_LONG).show();
 
+                //used to hide the keyboard after successful record insertion
                 try {
                     InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                    assert imm != null;
                     imm.hideSoftInputFromWindow(saveLayout.getWindowToken(), 0);
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }
+                //used to jump into the ViewContactsFragment after successful record insertion
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameForContacts, new ViewContactsFragment()).commit();
             }
         }
