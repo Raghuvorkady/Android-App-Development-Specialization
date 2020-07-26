@@ -18,7 +18,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen">
+        <activity android:name=".Activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,21 +27,21 @@
         </activity>
 
         <service
-            android:name=".MyAlarmService"
+            android:name=".Services.MyAlarmService"
             android:enabled="true"
             android:exported="false" />
         <service
-            android:name=".MyRingtoneService"
+            android:name=".Services.MyRingtoneService"
             android:enabled="true"
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing" />
 
         <provider
-            android:name=".ContactsProvider"
+            android:name=".ContentProviders.ContactsProvider"
             android:authorities="com.projectx.androidappdevelopment.provider"
             android:exported="false" />
     </application>

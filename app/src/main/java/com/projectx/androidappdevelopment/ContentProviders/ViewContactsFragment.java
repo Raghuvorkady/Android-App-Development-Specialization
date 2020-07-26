@@ -1,14 +1,12 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.ContentProviders;
 
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,9 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.projectx.androidappdevelopment.Adapters.MyRecyclerViewAdapter;
+import com.projectx.androidappdevelopment.Classes.Contacts;
+import com.projectx.androidappdevelopment.R;
 
 import java.util.ArrayList;
 
@@ -27,7 +26,7 @@ public class ViewContactsFragment extends Fragment {
 
     private ArrayList<Contacts> contactsArrayList = new ArrayList<>();
     RecyclerView recyclerView;
-    MyOwnAdapter myOwnAdapter;
+    MyRecyclerViewAdapter myRecyclerViewAdapter;
 
     private String s2 = new String();
     private String s3 = new String();
@@ -72,8 +71,8 @@ public class ViewContactsFragment extends Fragment {
             } while (c.moveToNext());
         }
 
-        myOwnAdapter = new MyOwnAdapter(getActivity().getApplicationContext(),contactsArrayList);
-        recyclerView.setAdapter(myOwnAdapter);
+        myRecyclerViewAdapter = new MyRecyclerViewAdapter(getActivity().getApplicationContext(),contactsArrayList);
+        recyclerView.setAdapter(myRecyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
     }
 }

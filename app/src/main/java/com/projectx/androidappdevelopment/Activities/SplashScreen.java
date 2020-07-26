@@ -1,10 +1,12 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.projectx.androidappdevelopment.R;
 
 public class SplashScreen extends AppCompatActivity {
     private final int SPLASH_DISPLAY_LENGTH = 1000;
@@ -19,7 +21,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(SplashScreen.this,MainActivity.class);
+                Intent mainIntent = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(mainIntent);
                 finish();
             }

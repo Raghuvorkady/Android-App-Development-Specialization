@@ -1,4 +1,4 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.Fragments;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
@@ -31,6 +31,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.projectx.androidappdevelopment.R;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -123,7 +125,7 @@ public class ImageDownloader extends Fragment {
             try {
                 fos = new FileOutputStream(file);
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                Toast.makeText(getActivity().getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), imageName+" image saved at location: \n"+ checkFile, Toast.LENGTH_LONG).show();
                 fos.flush();
                 fos.close();
             } catch (java.io.IOException e) {

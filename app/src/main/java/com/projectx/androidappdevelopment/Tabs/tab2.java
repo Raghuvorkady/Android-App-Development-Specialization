@@ -1,4 +1,4 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.Tabs;
 
 import android.app.ActionBar;
 import android.app.usage.NetworkStats;
@@ -28,6 +28,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
+
+import com.projectx.androidappdevelopment.R;
 
 public class tab2 extends Fragment {
 

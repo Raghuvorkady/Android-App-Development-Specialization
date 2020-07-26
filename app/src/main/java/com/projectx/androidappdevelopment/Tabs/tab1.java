@@ -1,4 +1,4 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.Tabs;
 
 import android.app.ActionBar;
 import android.content.Context;
@@ -22,6 +22,8 @@ import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.projectx.androidappdevelopment.R;
 
 import static com.projectx.androidappdevelopment.R.color.blue;
 

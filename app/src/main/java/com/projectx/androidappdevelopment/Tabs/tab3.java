@@ -1,4 +1,4 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.Tabs;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -16,6 +16,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.projectx.androidappdevelopment.R;
+import com.projectx.androidappdevelopment.Services.MyAlarmService;
+import com.projectx.androidappdevelopment.Services.MyRingtoneService;
 
 /**
  * A simple {@link Fragment} subclass.

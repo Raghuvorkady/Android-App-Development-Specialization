@@ -1,4 +1,4 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,17 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.projectx.androidappdevelopment.Classes.Contacts;
+import com.projectx.androidappdevelopment.R;
 
 import java.util.ArrayList;
 
-public class MyOwnAdapter extends RecyclerView.Adapter<MyOwnAdapter.MyOwnHolder> {
+public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyOwnHolder> {
 
     Context context;
     ArrayList<Contacts> contactsArrayList;
 
-    public MyOwnAdapter(Context context, ArrayList<Contacts> contactsArrayList) {
+    public MyRecyclerViewAdapter(Context context, ArrayList<Contacts> contactsArrayList) {
         this.context = context;
         this.contactsArrayList = contactsArrayList;
     }

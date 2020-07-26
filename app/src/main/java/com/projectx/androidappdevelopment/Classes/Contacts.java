@@ -1,4 +1,4 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.Classes;
 
 public class Contacts {
     private String name, phone, email;

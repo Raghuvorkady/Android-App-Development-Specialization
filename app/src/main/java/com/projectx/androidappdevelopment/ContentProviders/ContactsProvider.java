@@ -1,4 +1,4 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.ContentProviders;
 
 import java.util.HashMap;
 

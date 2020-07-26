@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FBDC81"
-    tools:context=".tab3">
+    tools:context=".Tabs.tab3">
 
     <RelativeLayout
         android:layout_width="match_parent"

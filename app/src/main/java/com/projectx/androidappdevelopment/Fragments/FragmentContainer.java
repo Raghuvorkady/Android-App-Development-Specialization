@@ -1,4 +1,4 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.Fragments;
 
 import android.os.Bundle;
 
@@ -12,6 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.projectx.androidappdevelopment.R;
+import com.projectx.androidappdevelopment.Tabs.tab1;
+import com.projectx.androidappdevelopment.Tabs.tab2;
+import com.projectx.androidappdevelopment.Tabs.tab3;
+import com.projectx.androidappdevelopment.Tabs.tab4;
 
 /**
  * A simple {@link Fragment} subclass.

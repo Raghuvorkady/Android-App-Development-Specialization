@@ -1,7 +1,6 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.Tabs;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -15,6 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.projectx.androidappdevelopment.R;
+import com.projectx.androidappdevelopment.ContentProviders.SaveContactsFragment;
+import com.projectx.androidappdevelopment.ContentProviders.ViewContactsFragment;
 
 /**
  * A simple {@link Fragment} subclass.

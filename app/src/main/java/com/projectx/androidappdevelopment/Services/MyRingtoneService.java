@@ -1,4 +1,4 @@
-package com.projectx.androidappdevelopment;
+package com.projectx.androidappdevelopment.Services;
 
 import android.app.Service;
 import android.content.Context;
