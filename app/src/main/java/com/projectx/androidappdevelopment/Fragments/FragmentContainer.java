@@ -1,7 +1,10 @@
 package com.projectx.androidappdevelopment.Fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,6 +20,7 @@ import com.projectx.androidappdevelopment.Tabs.tab3;
 import com.projectx.androidappdevelopment.Tabs.tab4;
 
 public class FragmentContainer extends Fragment {
+    private Toolbar toolbar;
 
     public FragmentContainer() {
         // Required empty public constructor
@@ -49,20 +53,25 @@ public class FragmentContainer extends Fragment {
     //used to switch between tabs
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 @Override
                 public boolean onNavigationItemSelected(MenuItem menuItem) {
                     Fragment selectedFragment = null;
                     switch (menuItem.getItemId()) {
                         case R.id.page_1:
+                            //toolbar.setBackground(getResources().getDrawable(R.color.tab1Title));
                             selectedFragment = new tab1();
                             break;
                         case R.id.page_2:
+                            //toolbar.setBackground(getResources().getDrawable(R.color.tab2Title));
                             selectedFragment = new tab2();
                             break;
                         case R.id.page_3:
+                            //toolbar.setBackground(getResources().getDrawable(R.color.tab3Title));
                             selectedFragment = new tab3();
                             break;
                         case R.id.page_4:
+                            //toolbar.setBackground(getResources().getDrawable(R.color.tab4Title));
                             selectedFragment = new tab4();
                             break;
                     }

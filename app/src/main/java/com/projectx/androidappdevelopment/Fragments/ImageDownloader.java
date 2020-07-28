@@ -3,16 +3,27 @@ package com.projectx.androidappdevelopment.Fragments;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Icon;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.media.app.NotificationCompat;
 
+import android.os.Environment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -25,6 +36,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.projectx.androidappdevelopment.Activities.MainActivity;
 import com.projectx.androidappdevelopment.R;
 
 import java.io.BufferedInputStream;
@@ -102,6 +114,7 @@ public class ImageDownloader extends Fragment {
         relativeLayout.setOnClickListener(hideKeyboard);
 
         downloadButton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 storeImage(image.getDrawingCache());
@@ -126,8 +139,12 @@ public class ImageDownloader extends Fragment {
     };
 
     //below method is used to save the image in the internal storage
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void storeImage(Bitmap bitmap) {
+        File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "/" + "AAD Basics" + "/" + "ImageDownloader");
+        File picPath = new File(getActivity().getApplicationContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), "/" + "AAD Basics" + "/" + "ImageDownloader");
         File checkFile = new File(String.valueOf(getActivity().getApplicationContext().getExternalFilesDir("/" + "AAD Basics" + "/" + "ImageDownloader")));
+        File checkFile1 = new File(path + "/" + "AAD Basics" + "/" + "ImageDownloader");
         @SuppressLint("SimpleDateFormat")
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date());
         String imageName = timeStamp + ".jpg";
@@ -138,6 +155,8 @@ public class ImageDownloader extends Fragment {
             try {
                 fos = new FileOutputStream(file);
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                createNotificationChannel();
+                notifyImageSaved(imageName, checkFile, bitmap);
                 Toast.makeText(getActivity().getApplicationContext(), imageName + " image saved at location: \n" + checkFile, Toast.LENGTH_LONG).show();
                 fos.flush();
                 fos.close();
@@ -146,6 +165,60 @@ public class ImageDownloader extends Fragment {
             }
         }
     }
+
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.app_name);
+            String description = getString(R.string.app_name);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("404", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void notifyImageSaved(String imageName, File checkFile, Bitmap bitmap) {
+        String text = imageName + " image saved at location: \n" + checkFile;
+        int notificationId = 101;
+        // Create an explicit intent for an Activity in your app
+        Intent intent = new Intent();
+        intent.setAction(android.content.Intent.ACTION_VIEW);
+
+        File file = new File(checkFile + "/" + imageName); // set your image path
+
+        Uri uri = FileProvider.getUriForFile(getContext(), getActivity().getApplicationContext().getPackageName() + ".fileProvider", file);
+        intent.setDataAndType(uri, "image/*");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, intent, 0);
+
+        Notification.Builder builder = new Notification.Builder(getContext(), "404")
+                .setSmallIcon(R.mipmap.add_applogo)
+                .setContentTitle("Image saved successfully")
+                .setContentText(text)
+                .setPriority(Notification.PRIORITY_DEFAULT)
+                // Set the intent that will fire when the user taps the notification
+                .setContentIntent(pendingIntent)
+                .setLargeIcon(bitmap)
+                .setShowWhen(true)
+                .setAutoCancel(true)
+                .setStyle(new Notification.BigPictureStyle()
+                        .bigPicture(bitmap)
+                        .bigLargeIcon((Icon) null));
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getContext());
+
+// notificationId is a unique int for each notification that you must define
+        notificationManager.notify(notificationId, builder.build());
+    }
+
 
     //used to retrieve the image in background
     private class DownloadImage extends AsyncTask<String, Void, Bitmap> {

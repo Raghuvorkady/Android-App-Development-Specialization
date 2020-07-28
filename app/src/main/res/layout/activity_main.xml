@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Activities.MainActivity"
-    tools:openDrawer="start">
+    tools:context=".Activities.MainActivity">
+    <!--tools:openDrawer="start"-->
     <!--Add a feature called scroll hide-->
 
     <LinearLayout
@@ -19,18 +19,20 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
             android:elevation="4dp"
+            android:background="@color/tab1Title"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            tools:targetApi="lollipop" />
+<!---
+        app:titleTextColor="@color/blue"-->
 
         <FrameLayout
             android:id="@+id/entire_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <include
-                layout="@layout/fragment_container"/>
++
+            <include layout="@layout/fragment_container" />
 
         </FrameLayout>
 

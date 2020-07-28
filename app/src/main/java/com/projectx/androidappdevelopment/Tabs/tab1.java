@@ -62,7 +62,6 @@ public class tab1 extends Fragment {
         String stringTab1 = getString(R.string.tab1Name);
         getActivity().setTitle(stringTab1 + "");
         getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.darkBlue));
-        getActivity().setTitleColor(getResources().getColor(R.color.blue));
 
         introButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -119,15 +118,17 @@ public class tab1 extends Fragment {
 
     //used to check the state(pressed or released) of introduction button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    private void introBtnStateCheck(Boolean b) {
+    public boolean introBtnStateCheck(Boolean b) {
         if (b) {
             introButton.setBackground(getResources().getDrawable(R.drawable.activity_intro_bg));
             introText.setVisibility(View.VISIBLE);
             INTRO_ENABLED = true;
+            return true;
         } else {
             introButton.setBackground(getResources().getDrawable(R.drawable.activity_intro_btn_off));
             introText.setVisibility(View.GONE);
             INTRO_ENABLED = false;
+            return false;
         }
     }
 

@@ -16,4 +16,8 @@
     <color name="darkYellow">#97844E</color>
     <color name="darkGreen">#5C7E65</color>
     <color name="black">#000</color>
+    <color name="tab1Title">#3266BB</color>
+    <color name="tab2Title">#B03228</color>
+    <color name="tab3Title">#BD8E04</color>
+    <color name="tab4Title">#277E3E</color>
 </resources>
