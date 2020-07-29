@@ -79,6 +79,7 @@ public class SaveContactsFragment extends Fragment {
             String phone = contactPhone.getText().toString();
             String email = contactEmail.getText().toString();
             // used to check for empty input fields
+            //TODO check for proper name, phone, email
             if (name.length() == 0 || phone.length() == 0 || email.length() == 0) {
                 Toast.makeText(getActivity().getApplicationContext(),
                         "Input fields cannot be empty", Toast.LENGTH_SHORT).show();
