@@ -120,8 +120,8 @@ public class tab1 extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public boolean introBtnStateCheck(Boolean b, Context context) {
         if (b) {
-            //introButton.setBackground(context.getResources().getDrawable(R.drawable.activity_intro_bg));
-            //introText.setVisibility(View.VISIBLE);
+            introButton.setBackground(context.getResources().getDrawable(R.drawable.activity_intro_bg));
+            introText.setVisibility(View.VISIBLE);
             INTRO_ENABLED = true;
             return true;
         } else {
