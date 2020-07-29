@@ -80,12 +80,24 @@ public class SaveContactsFragment extends Fragment {
             String email = contactEmail.getText().toString();
             // used to check for empty input fields
             //TODO check for proper name, phone, email
+
+            if (isValidMobile(phone)) {
+                Toast.makeText(getActivity().getApplicationContext(), "Enter proper phone number", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (isValidMail(email)) {
+                Toast.makeText(getActivity().getApplicationContext(), "Enter proper mail ID", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if (name.length() == 0 || phone.length() == 0 || email.length() == 0) {
                 Toast.makeText(getActivity().getApplicationContext(),
                         "Input fields cannot be empty", Toast.LENGTH_SHORT).show();
             } else {
                 //getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
                 //the below code is used to put name, phone, email into ContentValues object
+
                 ContentValues values = new ContentValues();
                 values.put(ContactsProvider.NAME, name);
                 values.put(ContactsProvider.PHONE, phone);
@@ -111,4 +123,12 @@ public class SaveContactsFragment extends Fragment {
             }
         }
     };
+
+    private boolean isValidMail(String email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    private boolean isValidMobile(String phone) {
+        return android.util.Patterns.PHONE.matcher(phone).matches();
+    }
 }
