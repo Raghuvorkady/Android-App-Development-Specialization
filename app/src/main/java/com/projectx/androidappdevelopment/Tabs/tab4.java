@@ -1,6 +1,7 @@
 package com.projectx.androidappdevelopment.Tabs;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -74,7 +75,7 @@ public class tab4 extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
-                introBtnStateCheck(!INTRO_ENABLED);
+                introBtnStateCheck(!INTRO_ENABLED, getContext());
             }
         });
 
@@ -166,15 +167,17 @@ public class tab4 extends Fragment {
 
     //used to check the state(pressed or released) of introduction button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    private void introBtnStateCheck(boolean b) {
+    public boolean introBtnStateCheck(boolean b, Context appContext) {
         if (b) {
-            introButton.setBackground(getResources().getDrawable(R.drawable.cp_intro_bg));
+            introButton.setBackground(appContext.getResources().getDrawable(R.drawable.cp_intro_bg));
             introText.setVisibility(View.VISIBLE);
             INTRO_ENABLED = true;
+            return true;
         } else {
-            introButton.setBackground(getResources().getDrawable(R.drawable.cp_intro_btn_off));
+            introButton.setBackground(appContext.getResources().getDrawable(R.drawable.cp_intro_btn_off));
             introText.setVisibility(View.GONE);
             INTRO_ENABLED = false;
+            return false;
         }
     }
 
@@ -183,7 +186,7 @@ public class tab4 extends Fragment {
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        introBtnStateCheck(INTRO_ENABLED);
+        introBtnStateCheck(INTRO_ENABLED, getContext());
         exampleBtnStateCheck(EXAMPLE_ENABLED);
         furtherReadingBtnStateCheck(FURTHER_READING_ENABLED);
         initialiseFrame(SAVE_CONTACT_ENABLED);

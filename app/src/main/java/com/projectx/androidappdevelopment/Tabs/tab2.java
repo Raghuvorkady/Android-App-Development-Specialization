@@ -89,7 +89,7 @@ public class tab2 extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
-                introBtnStateCheck(!INTRO_ENABLED);
+                introBtnStateCheck(!INTRO_ENABLED, getContext());
             }
         });
 
@@ -140,15 +140,17 @@ public class tab2 extends Fragment {
 
     //used to check the state(pressed or released) of introduction button
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    private void introBtnStateCheck(Boolean b) {
+    public boolean introBtnStateCheck(Boolean b, Context appContext) {
         if (b) {
-            introButton.setBackground(getResources().getDrawable(R.drawable.br_inro_bg));
+            introButton.setBackground(appContext.getResources().getDrawable(R.drawable.br_inro_bg));
             introText.setVisibility(View.VISIBLE);
             INTRO_ENABLED = true;
+            return true;
         } else {
-            introButton.setBackground(getResources().getDrawable(R.drawable.br_intro_btn_off));
+            introButton.setBackground(appContext.getResources().getDrawable(R.drawable.br_intro_btn_off));
             introText.setVisibility(View.GONE);
             INTRO_ENABLED = false;
+            return false;
         }
     }
 
@@ -207,7 +209,7 @@ public class tab2 extends Fragment {
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        introBtnStateCheck(INTRO_ENABLED);
+        introBtnStateCheck(INTRO_ENABLED, getContext());
         exampleBtnStateCheck(EXAMPLE_ENABLED);
         furtherReadingBtnStateCheck(FURTHER_READING_ENABLED);
     }
