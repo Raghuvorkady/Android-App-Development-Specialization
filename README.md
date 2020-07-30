@@ -1,5 +1,5 @@
 AAD(Android App Development) Basics is an Android Project which helps students to learn about the important concepts in Android i.e Activity, BroadcastReceiver, Services, ContentProvider and download images.
-      In the app, there are Bottom tabs, which helps to us learn each concepts with examples. And a hamgerbuger menu to switch between Home Activity and ImageDownloader Activity.
+      In the app, there are Bottom tabs, which helps us to learn each concepts with examples. And a hamgerbuger menu to switch between Home Activity and ImageDownloader Activity.
 <br/><br/>
 In the Home Activity, there are four tabs,<br/>
 i) Activity<br/>
