@@ -7,7 +7,7 @@ ii) BroadcastReceiver<br/>
 iii) Services<br/>
 iv) ContentProvider<br/>
 <br/>
-And in the ImageDownloader Activity(web service), there is one search bar, where user needs to enter the URL address of an image, so the user can download it.
-Using network protocols, the app finds the uploaded image from various web servers and makes it possible to view and download the image for the user.
+And in the ImageDownloader Activity(web service), there is one search bar, where user needs to enter the URL address of an image, so that the user can download it.
+Using network protocols, the app finds the uploaded image from various web servers and makes it possible to view and download the image.
 <br/><br/>
 App demo video: https://youtu.be/YKrpz30rQ2Q
