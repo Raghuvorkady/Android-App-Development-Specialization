@@ -4,10 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -48,9 +45,6 @@ public class FragmentContainer extends Fragment {
         BottomNavigationView bottomNavigationView = (BottomNavigationView) getView().findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
-        toolbar = (Toolbar) getView().findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-
         //used to create a default tab
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new tab1()).commit();
@@ -65,20 +59,20 @@ public class FragmentContainer extends Fragment {
                     Fragment selectedFragment = null;
                     switch (menuItem.getItemId()) {
                         case R.id.page_1:
+                            //toolbar.setBackground(getResources().getDrawable(R.color.tab1Title));
                             selectedFragment = new tab1();
-                            toolbar.setBackground(getResources().getDrawable(R.color.tab1Title));
                             break;
                         case R.id.page_2:
+                            //toolbar.setBackground(getResources().getDrawable(R.color.tab2Title));
                             selectedFragment = new tab2();
-                            toolbar.setBackground(getResources().getDrawable(R.color.tab2Title));
                             break;
                         case R.id.page_3:
+                            //toolbar.setBackground(getResources().getDrawable(R.color.tab3Title));
                             selectedFragment = new tab3();
-                            toolbar.setBackground(getResources().getDrawable(R.color.tab3Title));
                             break;
                         case R.id.page_4:
+                            //toolbar.setBackground(getResources().getDrawable(R.color.tab4Title));
                             selectedFragment = new tab4();
-                            toolbar.setBackground(getResources().getDrawable(R.color.tab4Title));
                             break;
                     }
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
